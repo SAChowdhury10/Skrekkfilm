@@ -1,0 +1,18 @@
+{
+  "version": "2.1.0",
+  "aspectRatio": "1.7777777777777777",
+  "fps": 24,
+  "defaultBoardTiming": 2000,
+  "boards": [
+    {
+      "uid": "U1JGB",
+      "url": "board-1-U1JGB.png",
+      "newShot": false,
+      "lastEdited": 1781625693962,
+      "layers": {},
+      "number": 1,
+      "shot": "1A",
+      "time": 0
+    }
+  ]
+}

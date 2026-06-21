@@ -1,0 +1,43 @@
+{
+  "version": "2.1.0",
+  "aspectRatio": "1.7777777777777777",
+  "fps": 24,
+  "defaultBoardTiming": 2000,
+  "boards": [
+    {
+      "uid": "1WY5F",
+      "url": "board-1-1WY5F.png",
+      "newShot": false,
+      "lastEdited": 1781196015021,
+      "layers": {
+        "shot-generator": {
+          "url": "board-1-1WY5F-shot-generator.png",
+          "opacity": 0.75
+        },
+        "reference": {
+          "url": "board-1-1WY5F-reference.png",
+          "opacity": 0.75
+        },
+        "fill": {
+          "url": "board-1-1WY5F-fill.png"
+        },
+        "tone": {
+          "url": "board-1-1WY5F-tone.png"
+        },
+        "pencil": {
+          "url": "board-1-1WY5F-pencil.png"
+        },
+        "ink": {
+          "url": "board-1-1WY5F-ink.png"
+        },
+        "notes": {
+          "url": "board-1-1WY5F-notes.png"
+        }
+      },
+      "number": 1,
+      "shot": "1A",
+      "time": 0,
+      "lineMileage": 56849.456643841266
+    }
+  ]
+}

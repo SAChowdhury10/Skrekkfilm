@@ -1,0 +1,46 @@
+{
+  "version": "2.1.0",
+  "aspectRatio": "1.7777777777777777",
+  "fps": 24,
+  "defaultBoardTiming": 2000,
+  "boards": [
+    {
+      "uid": "HJ8J7",
+      "url": "board-1-HJ8J7.png",
+      "newShot": false,
+      "lastEdited": 1781195997912,
+      "layers": {
+        "reference": {
+          "url": "board-1-HJ8J7-reference.png",
+          "opacity": 0.75
+        },
+        "tone": {
+          "url": "board-1-HJ8J7-tone.png"
+        },
+        "shot-generator": {
+          "url": "board-1-HJ8J7-shot-generator.png",
+          "opacity": 0.75
+        },
+        "fill": {
+          "url": "board-1-HJ8J7-fill.png"
+        },
+        "pencil": {
+          "url": "board-1-HJ8J7-pencil.png"
+        },
+        "ink": {
+          "url": "board-1-HJ8J7-ink.png"
+        },
+        "notes": {
+          "url": "board-1-HJ8J7-notes.png"
+        }
+      },
+      "number": 1,
+      "shot": "1A",
+      "time": 0,
+      "lineMileage": 51735.15841876676,
+      "duration": "3100",
+      "notes": "EXT. PARK BENCH - SUNRISE\nundefined",
+      "action": "MAN (v.o.) Chère Maman... Je pense à toi. (Dear Mom... I miss you.)"
+    }
+  ]
+}

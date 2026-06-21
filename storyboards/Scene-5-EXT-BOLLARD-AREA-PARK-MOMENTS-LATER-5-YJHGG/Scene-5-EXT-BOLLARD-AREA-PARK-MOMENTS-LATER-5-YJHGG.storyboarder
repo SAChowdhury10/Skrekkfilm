@@ -1,0 +1,44 @@
+{
+  "version": "2.1.0",
+  "aspectRatio": "1.7777777777777777",
+  "fps": 24,
+  "defaultBoardTiming": 2000,
+  "boards": [
+    {
+      "uid": "IHFS2",
+      "url": "board-1-IHFS2.png",
+      "newShot": false,
+      "lastEdited": 1781196017826,
+      "layers": {
+        "shot-generator": {
+          "url": "board-1-IHFS2-shot-generator.png"
+        },
+        "reference": {
+          "url": "board-1-IHFS2-reference.png",
+          "opacity": 0.75
+        },
+        "fill": {
+          "url": "board-1-IHFS2-fill.png"
+        },
+        "tone": {
+          "url": "board-1-IHFS2-tone.png"
+        },
+        "pencil": {
+          "url": "board-1-IHFS2-pencil.png"
+        },
+        "ink": {
+          "url": "board-1-IHFS2-ink.png"
+        },
+        "notes": {
+          "url": "board-1-IHFS2-notes.png"
+        }
+      },
+      "number": 1,
+      "shot": "1A",
+      "time": 0,
+      "duration": "5200",
+      "dialogue": "MAN: I doubt you ever even notice when the skies change from day to night...",
+      "lineMileage": 12775.996590816485
+    }
+  ]
+}

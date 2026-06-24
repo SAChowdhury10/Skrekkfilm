@@ -6,7 +6,7 @@
 
 ## The one thing to remember
 
-Don't show us the feeling. Let us catch it.
+Don't show us the feeling...Let us catch it.
 
 The camera is going to be patient. It'll wait. You don't have to fill the silence or prove the emotion. Trust that we are watching closely. Imagine you are a real person, alone with a thought. You wouldn't perform the thought.
 
@@ -20,7 +20,15 @@ Let the feelings live behind the eyes, not on the mouth. When something moves yo
 
 Look at things the way you look at something you are trying to remember. Not searching hard. Letting it come.
 
-[ REFERENCE LINK — FACE ]
+## Hands and stillness
+
+The body should mostly be still. When it moves, it should mean something without trying to.
+
+No nervous gestures. No filling space. A cigarette, a book, a map are things to hold, not things to act with. I imagine them being held the way you hold something you have held a hundred times.
+
+Keep it small. Almost nothing.
+
+[ REFERENCE LINK — STILLNESS/FACE: [www.dropbox.com/scl/fi/fi1234x895zzifejm6beq/ufi-ref-face-stillness-voice.mov?rlkey=s1jxcmp8t4077bb260m09wsih&amp;st=ttjbq6cj&amp;dl=0](https://www.dropbox.com/scl/fi/fi1234x895zzifejm6beq/ufi-ref-face-stillness-voice.mov?rlkey=s1jxcmp8t4077bb260m09wsih&st=ttjbq6cj&dl=0)
 
 ---
 
@@ -59,37 +67,16 @@ Keep it private. We are overhearing... The moment he forgets the French word and
 [ REFERENCE LINK — LETTER VO:
 https://www.dropbox.com/scl/fi/v43irgbx8e70mfzpxm70x/ufi-ref-letter-vo.mov?rlkey=d4ch7q14gld2b70w2ea5tuo5m&st=ly01vqlz&dl=0 ]
 
----
-
-## Hands and stillness
-
-The body should mostly be still. When it moves, it should mean something without trying to.
-
-No nervous gestures. No filling space. A cigarette, a book, a map are things to hold, not things to act with. I imagine them being held the way you hold something you have held a hundred times.
-
-Keep it small. Almost nothing.
-
-[ REFERENCE LINK — STILLNESS ]
 
 ---
 
-## The eyes (the closing)
-
-The old woman at the end is not sad. She knows something.
-
-Look into the distance like you are looking at a place you have already been. Not longing for it. Recognizing it.
-
-[ REFERENCE LINK — THE LOOK ]
-
----
-
-## The boy
+## The BOY
 
 He is listening to something we cannot hear.
 
-Not scared, not happy. Pulled. Curious in the way a child is curious before they learn to be careful. Everything he does is real and nothing he does is planned.
+He's neither scared, nor happy--somewhere in between. He's curious in the way a child is curious before they learn to be careful. Everything he does is real and nothing he does is planned.
 
-[ REFERENCE LINK — THE BOY ]
+[ REFERENCE LINK — THE BOY - TBD ]
 
 ---
 

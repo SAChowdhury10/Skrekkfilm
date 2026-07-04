@@ -2,7 +2,7 @@
 
 ## Our Sound Philosophy
 
-***Important reminder that these are not rules. Just how we see it for this film.***
+***These are not rules. Just how we see it for this film.***
 
 Sound is just another aspect of cinema. So are the screenplay, performances, cinematography, and production design, among others.
 
@@ -105,4 +105,4 @@ Our reference for the wind.
 
 Not because we want weather this severe, but because the movement of the landscape and the movement of the sound feel completely connected. When the air moves, everything moves with it. That is the feeling we are after.
 
-[ REFERENCE LINK - TEOREMA_1 https://www.dropbox.com/home/Skrekkfilm/01_Pre-Production/References/sound?preview=Turin_1.mov ]
+[ REFERENCE LINK - TURIN_1 https://www.dropbox.com/home/Skrekkfilm/01_Pre-Production/References/sound?preview=Turin_1.mov ]

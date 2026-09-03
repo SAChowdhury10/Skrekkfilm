@@ -1,110 +1,87 @@
 # Une Faible Impression — Production Tracker
 
-Outstanding decisions and concerns pulled from the Zoom meeting notes of
-**30 Aug 2026** (Scenes 1–4, budget, crew) and **2 Sep 2026** (Scenes 3–8,
-equipment, costume).
+A living list of outstanding decisions and concerns for the shoot, plus a
+colour-coded HTML report.
 
-## What's in this folder
+## Files
 
 | File | What it is |
 |---|---|
-| `scene-shot-items.csv` | 50 items, one per scene/shot decision or concern |
-| `production-wide-concerns.csv` | 32 items — crew, budget, equipment, schedule, prep |
-| `production-tracker.html` | The display report. Reads the data live and colour-codes it. |
-| `config.js` | Where you paste the two Google Sheets "publish to web" links |
-| `generate_seed_csvs.py` | Rebuilds the two CSVs from the source list (record of the seed) |
+| `scene-shot-items.csv` | **Source of truth.** One row per scene/shot decision or concern (`SS-01`…) |
+| `production-wide-concerns.csv` | **Source of truth.** Crew, budget, equipment, schedule, prep (`PW-01`…) |
+| `production-tracker.html` | The report. Reads the two CSVs and colour-codes them. |
+| `config.js` | Optional data-source overrides — normally untouched |
+| `CHANGELOG.md` | Every meeting's batch of edits, newest first |
+| `generate_seed_csvs.py` | Frozen record of the original extraction — **do not run** |
+
+The **two CSV files are the master.** They're edited from meeting notes, committed,
+and pushed; GitHub Pages serves the report and the CSVs together, so the published
+report always reflects the latest push.
 
 ## Columns
 
-`Scene · Shot · Item / Decision · Category · Status · Priority · Owner ·
-Needs input from · Deadline · Options / Notes · Source`
+`ID · Scene · Shot · Item/Decision · Category · Status · Priority · Owner ·
+Needs input from · Deadline · Options/Notes · Source · Updated · Log`
 
+(`Production-Wide` uses `Area` instead of `Scene`/`Shot`, and `Notes` instead of `Options/Notes`.)
+
+- **ID** — permanent handle for the row. `SS-##` (scene/shot) or `PW-##` (production-wide).
+  Numbers are never reused; new rows take the next free number.
 - **Status** — `Blocked` · `Open` · `Leaning` · `Decided` · `Deferred`
-- **Priority** — `P1` (needed before the shoot) · `P2` (needed before / at the scout) · `P3` (nice-to-have)
-- **Category** — Camera/Move · Blocking · Location · Equipment · Costume/PD · Sound · Schedule · VFX/Edit · VFX/Color · Crew · Budget · Cast · Prep · Process
+- **Priority** — `P1` (needed before the shoot) · `P2` (before/at the scout) · `P3` (nice-to-have)
+- **Updated** — date the row last changed (`YYYY-MM-DD`)
+- **Log** — dated one-line history, e.g. `2026-09-16 → P1, waiting on Bad Dog · 2026-09-03 created`
 
-## Colour code (spreadsheet + HTML use the same scheme)
+### Colour code (used by the report)
 
 | Status | Fill | Meaning |
 |---|---|---|
 | 🔴 Blocked | red | Can't move until someone/something unblocks it |
-| 🟠 Open | orange | Undecided, actively needs a call |
-| 🟡 Leaning | yellow | A direction is favoured but not locked |
+| 🟠 Open | orange | Undecided, needs a call |
+| 🟡 Leaning | yellow | A direction is favoured, not locked |
 | 🟢 Decided | green | Settled — kept for context |
 | ⚪ Deferred | grey | Parked on purpose |
 
-Priority shows as a coloured `P1/P2/P3` tag and the row's left border.
+Priority also shows as a `P1/P2/P3` tag and the row's left border.
 
 ---
 
-## Making it live (Google Sheets → HTML)
+## The meeting update loop
 
-### 1. Get the data into a Google Sheet
+After each Zoom meeting:
 
-1. Go to <https://sheets.new>
-2. **File → Import → Upload → `scene-shot-items.csv`** → *Import location:* **Replace current sheet** → Import
-3. Rename that tab (double-click the tab name at the bottom) to **`Scene & Shot Items`**
-4. **File → Import → Upload → `production-wide-concerns.csv`** → *Import location:* **Insert new sheet(s)** → Import
-5. Rename the new tab to **`Production-Wide`**
+1. **Drop the Zoom notes** into `meeting-notes/` (same as always).
+2. **Tell Claude:** *"process the `meeting-notes/<file>` into the tracker."*
+3. Claude reads the notes + the current CSVs and posts a **proposed changelist by ID** —
+   status changes, re-prioritizations, new rows, added Log lines, closed items.
+4. You approve or adjust in chat.
+5. Claude edits the CSVs, appends a dated section to `CHANGELOG.md`, commits, and pushes.
+6. GitHub Pages redeploys in ~1 minute — refresh the report link.
 
-### 2. Add the colour coding (conditional formatting — travels with the data)
+**Referring to items on the call:** read the **ID** off the report (`SS-12`, `PW-03`).
+Say things like *"SS-12, Sam approved option B — mark Leaning, bump nothing"* or
+*"PW-01 gaffer is confirmed, close it"* or *"new item under Scene 6: …"*.
 
-On the **`Scene & Shot Items`** tab:
+---
 
-1. Select column **E** (Status) — click the `E` header
-2. **Format → Conditional formatting**
-3. Add one rule per status: *Format cells if…* **Text is exactly** →
-   - `Blocked` → fill `#f4c7c3` (red)
-   - `Open` → fill `#fce8b2` (orange)
-   - `Leaning` → fill `#fff2cc` (yellow)
-   - `Decided` → fill `#d9ead3` (green)
-   - `Deferred` → fill `#e6e6e6` (grey)
-4. *(optional, whole-row colour)* instead of column E, select `A2:K200`, choose
-   **Custom formula is** and use `=$E2="Blocked"` etc. for each colour.
-5. For priority, select column **F** and add: `P1` → red text/bold, `P2` → orange, `P3` → grey.
+## Hosting (GitHub Pages) — one-time
 
-Repeat on the **`Production-Wide`** tab (Status is column **D**, Priority column **E**).
+1. Push `production-tracker/` to `main` (done).
+2. GitHub → **Skrekkfilm → Settings → Pages**
+3. **Source: "Deploy from a branch"** → Branch **`main`**, folder **`/ (root)`** → **Save**
+4. After ~1 min the report is at:
+   `https://sachowdhury10.github.io/Skrekkfilm/production-tracker/production-tracker.html`
+5. Share that link with the crew. No account, works on phones. Every later push redeploys it.
 
-### 3. Publish both tabs to the web
+## Running it locally (offline)
 
-1. **File → Share → Publish to web**
-2. **Link** tab → first dropdown: **`Scene & Shot Items`** → second dropdown:
-   **Comma-separated values (.csv)** → **Publish** → copy the URL
-3. Change the first dropdown to **`Production-Wide`**, keep **.csv**, **Publish**, copy that URL
-4. The URLs look like
-   `https://docs.google.com/spreadsheets/d/e/2PACX-…/pub?gid=0&single=true&output=csv`
-
-### 4. Wire the URLs into the report
-
-Open `config.js` and paste:
-
-```js
-window.TRACKER_CONFIG = {
-  sceneShotCsvUrl: "https://docs.google.com/…&output=csv",   // Scene & Shot Items
-  overallCsvUrl:   "https://docs.google.com/…&output=csv",   // Production-Wide
-  ...
-};
-```
-
-### 5. Use it
-
-- Open `production-tracker.html` in a browser.
-- Edit the **Google Sheet** whenever something changes → click **Reload** in the
-  report (or refresh the page). Google's published CSV can lag a few minutes
-  behind an edit — that's a Google cache, not the report.
-- The report shows a "refreshed <time>" stamp and whether it loaded from the
-  live Sheet or the local files.
-
-## Running it without Google (offline)
-
-- **Served locally:** from this folder run `python3 -m http.server 8777` and open
-  <http://localhost:8777/production-tracker.html> — it reads the local CSVs directly.
-- **Double-clicked from disk:** browsers block the local CSV fetch; use the
+- **Served:** from this folder, `python3 -m http.server 8000` → open
+  <http://localhost:8000/production-tracker.html>
+- **Double-clicked from disk:** the browser blocks the CSV read; use the
   **"Load CSV file"** buttons the page shows to pick the two files by hand.
 
 ## Deadlines note
 
-Dates are copied as they were spoken in the meetings ("Thursday night",
-"Mon scout", "before Saturday"). Principal photography lines up with the dolly
-rental (pickup the 23rd, return by 10 AM the 26th) → **the weekend of the 24th–26th**.
-Confirm the specifics against the current schedule.
+Dates are copied as spoken in the meetings ("Thursday night", "Mon scout"). Principal
+photography lines up with the dolly rental (pickup the 23rd, return by 10 AM the 26th) →
+**the weekend of the 24th–26th**. Confirm against the live schedule.

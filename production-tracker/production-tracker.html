@@ -59,8 +59,8 @@
   .btn:hover{background:#f0ece5}
 
   #tableHost > div{overflow-x:auto}
-  table{width:100%;border-collapse:collapse;font-size:13px;min-width:1160px;table-layout:fixed}
-  colgroup .c-item{width:22%} colgroup .c-notes{width:30%}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:1180px;table-layout:fixed}
+  .clamp{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
   thead th{position:sticky;top:0;background:#efece6;text-align:left;padding:8px 10px;
     border-bottom:2px solid var(--line);font-size:11.5px;text-transform:uppercase;
     letter-spacing:.4px;color:var(--muted);white-space:nowrap;z-index:2}
@@ -77,6 +77,12 @@
 
   .cell-scene{font-weight:700;white-space:nowrap}
   .cell-shot{color:var(--muted);white-space:nowrap}
+  .cell-id{font:600 11.5px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    white-space:nowrap}
+  .cell-id b{background:#2f2a24;color:#fff;padding:2px 6px;border-radius:5px;font-weight:600;
+    letter-spacing:.3px}
+  .cell-log{color:#6b6560;font-size:11.5px;line-height:1.45}
+  .cell-upd{color:var(--muted);font-size:11.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
   .cell-item{font-weight:550;min-width:230px}
   .cell-notes{color:#3a3630;font-size:12.5px}
   td.nowrap{white-space:normal}
@@ -87,7 +93,8 @@
   .pill.st-leaning{background:var(--leaning-bar);color:#4a3a04}
   .pill.st-decided{background:var(--decided-bar);color:#fff}
   .pill.st-deferred{background:var(--deferred-bar);color:#fff}
-  .pri{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:750}
+  td.pri-cell{white-space:nowrap}
+  .pri{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:750;white-space:nowrap}
   .pri.P1{background:#d93b2b;color:#fff}
   .pri.P2{background:#e8942e;color:#fff}
   .pri.P3{background:#b8b0a5;color:#fff}
@@ -118,7 +125,7 @@
 <header>
   <div class="wrap">
     <div class="title">Une Faible Impression &nbsp;<small>Production Tracker &mdash; outstanding decisions &amp; concerns</small></div>
-    <div class="sub">Auto-generated from the Zoom meeting notes of 30&nbsp;Aug&nbsp;2026 (Scenes&nbsp;1&ndash;4) and 2&nbsp;Sep&nbsp;2026 (Scenes&nbsp;3&ndash;8). Principal photography &asymp; weekend of the 24th&ndash;26th; dolly pickup the 23rd.</div>
+    <div class="sub">Started from the Zoom meeting notes of 30&nbsp;Aug&nbsp;2026 (Scenes&nbsp;1&ndash;4) and 2&nbsp;Sep&nbsp;2026 (Scenes&nbsp;3&ndash;8); maintained meeting-by-meeting. Principal photography &asymp; weekend of the 24th&ndash;26th; dolly pickup the 23rd. Cite rows by <b>ID</b> (SS-##, PW-##).</div>
     <div class="status-line" id="statusLine">Loading&hellip;</div>
   </div>
 </header>
@@ -201,8 +208,7 @@
     setStatus("Loading&hellip;");
     var sceneUrl = CFG.sceneShotCsvUrl || CFG.sceneShotLocal;
     var overallUrl = CFG.overallCsvUrl || CFG.overallLocal;
-    var live = !!CFG.sceneShotCsvUrl;
-    state.source = { live: live, scene: sceneUrl, overall: overallUrl };
+    state.source = { scene: sceneUrl, overall: overallUrl };
 
     Promise.all([ fetchText(sceneUrl), fetchText(overallUrl) ])
       .then(function(res){
@@ -212,11 +218,9 @@
       })
       .catch(function(e){
         console.error(e);
-        var msg = "Could not load the data automatically. ";
-        if(!live) msg += "The local CSV fetch is blocked when the page is opened directly from disk (file://). "
-                       + "Either serve this folder over http, publish the Google Sheet and fill in config.js, "
-                       + "or load the two CSV files manually below.";
-        else msg += String(e.message||e);
+        var msg = "Could not load the data. " + String(e.message||e) + " &mdash; "
+          + "if you opened this file directly from disk (file://) the browser blocks the CSV read; "
+          + "serve the folder over http, or load the two CSV files by hand below.";
         setError(msg, true);
         setStatus("Not loaded.");
       });
@@ -224,19 +228,18 @@
 
   function afterLoad(){
     var now = new Date();
-    var where = state.source.live ? "live Google Sheet" : "local CSV files";
-    setStatus("Loaded from <b>"+where+"</b> &middot; "+
-      state.data.scene.length+" scene/shot items, "+state.data.overall.length+" production-wide "+
-      "&middot; refreshed <b>"+now.toLocaleString()+"</b>");
+    setStatus(
+      state.data.scene.length+" scene/shot items &middot; "+state.data.overall.length+" production-wide "+
+      "&middot; loaded <b>"+now.toLocaleString()+"</b>");
     document.getElementById("tabCountScene").textContent   = "("+state.data.scene.length+")";
     document.getElementById("tabCountOverall").textContent = "("+state.data.overall.length+")";
     buildFilterOptions();
     render();
     document.getElementById("foot").innerHTML =
-      "Source of truth: "+(state.source.live
-        ? "the published Google Sheet (edit the Sheet, then hit Reload here)."
-        : "the CSV files in this folder / <code>generate_seed_csvs.py</code>.")+
-      " &nbsp;Colour = status. Left bar + P-tag = priority (P1 before shoot, P2 before scout, P3 nice-to-have).";
+      "Source of truth: the two CSV files in <code>production-tracker/</code> (GitHub). "+
+      "Updates are applied from meeting notes, committed, and pushed &mdash; this page reflects the latest push. "+
+      "&nbsp;Colour = status. Left bar + P-tag = priority (P1 before shoot, P2 before scout, P3 nice-to-have). "+
+      "Refer to a row by its <b>ID</b> (e.g. SS-12, PW-03).";
   }
 
   /* ---------- UI plumbing ---------- */
@@ -376,51 +379,64 @@
   function catTag(c){ return c ? '<span class="cat">'+esc(c)+'</span>' : ''; }
   function rowClass(r){ return 's-'+statusKey(r["Status"]); }
 
+  function idCell(r){ return '<td class="cell-id"><b>'+esc(r["ID"])+'</b></td>'; }
+  function clampCell(cls, text){
+    var t = esc(text);
+    return '<td class="'+cls+'"><div class="clamp" title="'+t+'">'+t+'</div></td>';
+  }
+
   function sceneTable(rows){
     var body = rows.map(function(r){
       return '<tr class="'+rowClass(r)+'">'+
+        idCell(r)+
         '<td class="cell-scene">'+esc(r["Scene"])+'</td>'+
         '<td class="cell-shot">'+esc(r["Shot"])+'</td>'+
         '<td class="cell-item">'+esc(r["Item / Decision"])+'</td>'+
         '<td class="nowrap">'+catTag(r["Category"])+'</td>'+
         '<td class="nowrap">'+statusPill(r["Status"])+'</td>'+
-        '<td class="nowrap">'+priTag(r["Priority"])+'</td>'+
+        '<td class="pri-cell">'+priTag(r["Priority"])+'</td>'+
         '<td class="owner">'+esc(r["Owner"])+'</td>'+
         '<td class="owner">'+esc(r["Needs input from"])+'</td>'+
         '<td class="nowrap">'+esc(r["Deadline"])+'</td>'+
-        '<td class="cell-notes">'+esc(r["Options / Notes"])+'</td>'+
-        '<td class="src">'+esc(r["Source"])+'</td>'+
+        clampCell("cell-notes", r["Options / Notes"])+
+        clampCell("cell-log", r["Log"])+
+        '<td class="cell-upd">'+esc(r["Updated"])+'</td>'+
       '</tr>';
     }).join("");
     return '<div><table><colgroup>'+
-      '<col style="width:4%"><col style="width:6%"><col style="width:20%"><col style="width:7%">'+
-      '<col style="width:7%"><col style="width:4%"><col style="width:8%"><col style="width:9%">'+
-      '<col style="width:8%"><col style="width:21%"><col style="width:6%"></colgroup><thead><tr>'+
-      '<th>Scene</th><th>Shot</th><th>Item / Decision</th><th>Category</th><th>Status</th>'+
-      '<th>Pri</th><th>Owner</th><th>Needs input</th><th>Deadline</th><th>Options / Notes</th><th>Src</th>'+
+      '<col style="width:4%"><col style="width:3%"><col style="width:5%"><col style="width:17%">'+
+      '<col style="width:6%"><col style="width:6%"><col style="width:4%"><col style="width:8%">'+
+      '<col style="width:8%"><col style="width:7%"><col style="width:17%"><col style="width:7%">'+
+      '<col style="width:6%"></colgroup><thead><tr>'+
+      '<th>ID</th><th>Sc</th><th>Shot</th><th>Item / Decision</th><th>Category</th><th>Status</th>'+
+      '<th>Pri</th><th>Owner</th><th>Needs input</th><th>Deadline</th><th>Options / Notes</th>'+
+      '<th>Log</th><th>Updated</th>'+
       '</tr></thead><tbody>'+body+'</tbody></table></div>';
   }
   function overallTable(rows){
     var body = rows.map(function(r){
       return '<tr class="'+rowClass(r)+'">'+
+        idCell(r)+
         '<td class="cell-scene">'+esc(r["Area"])+'</td>'+
         '<td class="cell-item">'+esc(r["Item / Concern"])+'</td>'+
         '<td class="nowrap">'+catTag(r["Category"])+'</td>'+
         '<td class="nowrap">'+statusPill(r["Status"])+'</td>'+
-        '<td class="nowrap">'+priTag(r["Priority"])+'</td>'+
+        '<td class="pri-cell">'+priTag(r["Priority"])+'</td>'+
         '<td class="owner">'+esc(r["Owner"])+'</td>'+
         '<td class="owner">'+esc(r["Needs input from"])+'</td>'+
         '<td class="nowrap">'+esc(r["Deadline"])+'</td>'+
-        '<td class="cell-notes">'+esc(r["Notes"])+'</td>'+
-        '<td class="src">'+esc(r["Source"])+'</td>'+
+        clampCell("cell-notes", r["Notes"])+
+        clampCell("cell-log", r["Log"])+
+        '<td class="cell-upd">'+esc(r["Updated"])+'</td>'+
       '</tr>';
     }).join("");
     return '<div><table><colgroup>'+
-      '<col style="width:8%"><col style="width:22%"><col style="width:8%"><col style="width:7%">'+
-      '<col style="width:4%"><col style="width:9%"><col style="width:9%"><col style="width:9%">'+
-      '<col style="width:18%"><col style="width:6%"></colgroup><thead><tr>'+
-      '<th>Area</th><th>Item / Concern</th><th>Category</th><th>Status</th><th>Pri</th>'+
-      '<th>Owner</th><th>Needs input</th><th>Deadline</th><th>Notes</th><th>Src</th>'+
+      '<col style="width:4%"><col style="width:7%"><col style="width:19%"><col style="width:7%">'+
+      '<col style="width:6%"><col style="width:4%"><col style="width:8%"><col style="width:8%">'+
+      '<col style="width:8%"><col style="width:18%"><col style="width:8%"><col style="width:6%">'+
+      '</colgroup><thead><tr>'+
+      '<th>ID</th><th>Area</th><th>Item / Concern</th><th>Category</th><th>Status</th><th>Pri</th>'+
+      '<th>Owner</th><th>Needs input</th><th>Deadline</th><th>Notes</th><th>Log</th><th>Updated</th>'+
       '</tr></thead><tbody>'+body+'</tbody></table></div>';
   }
 

@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """
-Generate the seed CSVs for the Une Faible Impression production tracker.
+SUPERSEDED — historical record only. DO NOT RUN.
 
-Source: Zoom meeting notes 2026-08-30 (Scenes 1-4, budget, crew) and
-2026-09-02 (Scenes 3-8, equipment, costume).
+This produced the FIRST version of the tracker CSVs from the Zoom meeting notes
+of 2026-08-30 and 2026-09-02. Since then the CSVs are hand-maintained from
+meeting notes (they now also carry ID / Updated / Log columns this script does
+not write). Running it would overwrite every later edit.
 
-These CSVs are only the INITIAL import. Once the data is in Google Sheets,
-the Sheet is the master and this script is just a record of how it started.
-Re-run:  python3 generate_seed_csvs.py
+Kept in the repo so the original extraction is auditable. If you really need to
+run it anyway, pass --force.
 """
 import csv
 import os
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -359,5 +361,10 @@ def write_csv(path, header, rows):
 
 
 if __name__ == "__main__":
+    if "--force" not in sys.argv:
+        sys.exit(
+            "Refusing to run: this would overwrite the hand-maintained tracker CSVs "
+            "(and drop the ID / Updated / Log columns). Pass --force if you really mean it."
+        )
     write_csv(os.path.join(HERE, "scene-shot-items.csv"), SCENE_HEADER, SCENE_ROWS)
     write_csv(os.path.join(HERE, "production-wide-concerns.csv"), OVERALL_HEADER, OVERALL_ROWS)

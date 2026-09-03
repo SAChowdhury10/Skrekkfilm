@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UFI Production Tracker</title>
+<style>
+  :root{
+    --bg:#f4f2ee; --panel:#ffffff; --ink:#1c1a17; --muted:#6b6560;
+    --line:#e2ddd5; --accent:#3d5a80;
+    --blocked-bg:#fde0dd; --blocked-ink:#8a1c13; --blocked-bar:#e0483b;
+    --open-bg:#fdebd2; --open-ink:#8a4b0d; --open-bar:#e8942e;
+    --leaning-bg:#fbf3cd; --leaning-ink:#7a5a08; --leaning-bar:#e0bb2e;
+    --decided-bg:#dcefdc; --decided-ink:#1f5b31; --decided-bar:#4fa564;
+    --deferred-bg:#e8e6e1; --deferred-ink:#5b544d; --deferred-bar:#a9a29a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);
+    font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;padding:0 0 60px}
+  a{color:var(--accent)}
+  header{padding:22px 24px 14px;border-bottom:1px solid var(--line);background:var(--panel)}
+  .title{font-size:20px;font-weight:650;letter-spacing:.2px}
+  .title small{font-weight:400;color:var(--muted);font-size:13px;letter-spacing:0}
+  .sub{color:var(--muted);font-size:12.5px;margin-top:3px}
+  .status-line{margin-top:8px;font-size:12px;color:var(--muted)}
+  .status-line b{color:var(--ink)}
+  .wrap{max-width:1400px;margin:0 auto;padding:0 24px}
+
+  .tabs{display:flex;gap:4px;margin:16px 0 0}
+  .tab{padding:8px 16px;border:1px solid var(--line);border-bottom:none;
+    border-radius:8px 8px 0 0;background:#ece8e1;cursor:pointer;font-weight:550;color:var(--muted)}
+  .tab.active{background:var(--panel);color:var(--ink)}
+  .tab .n{color:var(--muted);font-weight:400}
+
+  .board{background:var(--panel);border:1px solid var(--line);border-radius:0 10px 10px 10px;
+    padding:16px}
+
+  .summary{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .chip{border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:12.5px;
+    cursor:pointer;user-select:none;display:flex;align-items:center;gap:7px;background:#fff}
+  .chip .dot{width:9px;height:9px;border-radius:50%}
+  .chip .c{font-variant-numeric:tabular-nums;font-weight:650}
+  .chip.off{opacity:.38}
+  .chip.pri{cursor:default}
+  .dot.blocked{background:var(--blocked-bar)} .dot.open{background:var(--open-bar)}
+  .dot.leaning{background:var(--leaning-bar)} .dot.decided{background:var(--decided-bar)}
+  .dot.deferred{background:var(--deferred-bar)}
+
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+  .controls select,.controls input[type=search]{
+    font:inherit;padding:6px 9px;border:1px solid var(--line);border-radius:7px;background:#fff;color:inherit}
+  .controls input[type=search]{min-width:220px}
+  .controls label.tgl{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);cursor:pointer}
+  .controls .spacer{flex:1}
+  .btn{font:inherit;padding:6px 12px;border:1px solid var(--line);border-radius:7px;background:#fff;
+    cursor:pointer;color:inherit}
+  .btn:hover{background:#f0ece5}
+
+  #tableHost > div{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:1160px;table-layout:fixed}
+  colgroup .c-item{width:22%} colgroup .c-notes{width:30%}
+  thead th{position:sticky;top:0;background:#efece6;text-align:left;padding:8px 10px;
+    border-bottom:2px solid var(--line);font-size:11.5px;text-transform:uppercase;
+    letter-spacing:.4px;color:var(--muted);white-space:nowrap;z-index:2}
+  tbody td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top;
+    overflow-wrap:anywhere;word-break:normal}
+  tbody td + td, thead th + th{border-left:1px solid rgba(0,0,0,.09)}
+  tbody tr{border-left:4px solid transparent}
+  tbody tr:hover{filter:brightness(.985)}
+  tr.s-blocked{background:var(--blocked-bg);border-left-color:var(--blocked-bar)}
+  tr.s-open{background:var(--open-bg);border-left-color:var(--open-bar)}
+  tr.s-leaning{background:var(--leaning-bg);border-left-color:var(--leaning-bar)}
+  tr.s-decided{background:var(--decided-bg);border-left-color:var(--decided-bar)}
+  tr.s-deferred{background:var(--deferred-bg);border-left-color:var(--deferred-bar)}
+
+  .cell-scene{font-weight:700;white-space:nowrap}
+  .cell-shot{color:var(--muted);white-space:nowrap}
+  .cell-item{font-weight:550;min-width:230px}
+  .cell-notes{color:#3a3630;font-size:12.5px}
+  td.nowrap{white-space:normal}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:650;
+    border:1px solid rgba(0,0,0,.14);white-space:nowrap}
+  .pill.st-blocked{background:var(--blocked-bar);color:#fff}
+  .pill.st-open{background:var(--open-bar);color:#fff}
+  .pill.st-leaning{background:var(--leaning-bar);color:#4a3a04}
+  .pill.st-decided{background:var(--decided-bar);color:#fff}
+  .pill.st-deferred{background:var(--deferred-bar);color:#fff}
+  .pri{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:750}
+  .pri.P1{background:#d93b2b;color:#fff}
+  .pri.P2{background:#e8942e;color:#fff}
+  .pri.P3{background:#b8b0a5;color:#fff}
+  .cat{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;
+    background:#eceae4;border:1px solid var(--line);white-space:nowrap}
+  .src{color:var(--muted);font-size:11.5px;white-space:nowrap}
+  .owner{white-space:nowrap}
+
+  .empty{padding:40px;text-align:center;color:var(--muted)}
+  .loader{padding:18px;text-align:center;color:var(--muted)}
+  .err{margin:12px 0;padding:12px 14px;border:1px solid var(--blocked-bar);
+    background:var(--blocked-bg);color:var(--blocked-ink);border-radius:8px;font-size:12.5px}
+  .filepick{display:inline-flex;gap:6px;align-items:center}
+
+  footer{max-width:1400px;margin:18px auto 0;padding:0 24px;color:var(--muted);font-size:11.5px}
+
+  @media print{
+    body{background:#fff;padding:0}
+    .controls,.tabs,.chip{display:none!important}
+    .summary{display:none}
+    .board{border:none;padding:0}
+    thead th{position:static}
+    tr.s-blocked,tr.s-open,tr.s-leaning,tr.s-decided,tr.s-deferred{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="title">Une Faible Impression &nbsp;<small>Production Tracker &mdash; outstanding decisions &amp; concerns</small></div>
+    <div class="sub">Auto-generated from the Zoom meeting notes of 30&nbsp;Aug&nbsp;2026 (Scenes&nbsp;1&ndash;4) and 2&nbsp;Sep&nbsp;2026 (Scenes&nbsp;3&ndash;8). Principal photography &asymp; weekend of the 24th&ndash;26th; dolly pickup the 23rd.</div>
+    <div class="status-line" id="statusLine">Loading&hellip;</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="errbox"></div>
+
+  <div class="tabs">
+    <div class="tab active" data-view="scene">Scene &amp; Shot Items <span class="n" id="tabCountScene"></span></div>
+    <div class="tab" data-view="overall">Production-Wide Concerns <span class="n" id="tabCountOverall"></span></div>
+  </div>
+
+  <div class="board">
+    <div class="summary" id="summary"></div>
+
+    <div class="controls" id="controls">
+      <select id="fScene"><option value="">All scenes</option></select>
+      <select id="fCategory"><option value="">All categories</option></select>
+      <select id="fOwner"><option value="">All owners</option></select>
+      <input type="search" id="fText" placeholder="Search text&hellip;">
+      <label class="tgl"><input type="checkbox" id="fOpen"> Hide decided / deferred</label>
+      <div class="spacer"></div>
+      <button class="btn" id="btnReload">&#8635; Reload</button>
+      <button class="btn" id="btnPrint">&#8984;P Print</button>
+    </div>
+
+    <div id="tableHost"><div class="loader">Loading data&hellip;</div></div>
+  </div>
+</div>
+
+<footer id="foot"></footer>
+
+<script src="config.js"></script>
+<script>
+(function(){
+  "use strict";
+  var CFG = window.TRACKER_CONFIG || {};
+  var STATUS_ORDER = ["Blocked","Open","Leaning","Decided","Deferred"];
+  var state = { view:"scene", data:{scene:[],overall:[]}, mutedStatus:{}, source:{} };
+
+  /* ---------- tiny CSV parser (handles quotes, commas, newlines) ---------- */
+  function parseCSV(text){
+    var rows=[], row=[], cur="", i=0, inQ=false, c;
+    text = text.replace(/\r\n/g,"\n").replace(/\r/g,"\n");
+    while(i < text.length){
+      c = text[i];
+      if(inQ){
+        if(c === '"'){
+          if(text[i+1] === '"'){ cur += '"'; i+=2; continue; }
+          inQ=false; i++; continue;
+        }
+        cur += c; i++; continue;
+      }
+      if(c === '"'){ inQ=true; i++; continue; }
+      if(c === ','){ row.push(cur); cur=""; i++; continue; }
+      if(c === '\n'){ row.push(cur); rows.push(row); row=[]; cur=""; i++; continue; }
+      cur += c; i++;
+    }
+    if(cur.length || row.length){ row.push(cur); rows.push(row); }
+    return rows.filter(function(r){ return r.length>1 || (r.length===1 && r[0].trim()!==""); });
+  }
+  function toObjects(rows){
+    if(!rows.length) return [];
+    var head = rows[0].map(function(h){return h.trim();});
+    return rows.slice(1).map(function(r){
+      var o={}; head.forEach(function(h,idx){ o[h] = (r[idx]||"").trim(); }); return o;
+    });
+  }
+  function statusKey(s){ return (s||"").toLowerCase().replace(/[^a-z]/g,""); }
+
+  /* ---------- loading ---------- */
+  function fetchText(url){
+    return fetch(url, {cache:"no-store"}).then(function(r){
+      if(!r.ok) throw new Error("HTTP "+r.status+" for "+url);
+      return r.text();
+    });
+  }
+  function load(){
+    setError("");
+    setStatus("Loading&hellip;");
+    var sceneUrl = CFG.sceneShotCsvUrl || CFG.sceneShotLocal;
+    var overallUrl = CFG.overallCsvUrl || CFG.overallLocal;
+    var live = !!CFG.sceneShotCsvUrl;
+    state.source = { live: live, scene: sceneUrl, overall: overallUrl };
+
+    Promise.all([ fetchText(sceneUrl), fetchText(overallUrl) ])
+      .then(function(res){
+        state.data.scene   = toObjects(parseCSV(res[0]));
+        state.data.overall = toObjects(parseCSV(res[1]));
+        afterLoad();
+      })
+      .catch(function(e){
+        console.error(e);
+        var msg = "Could not load the data automatically. ";
+        if(!live) msg += "The local CSV fetch is blocked when the page is opened directly from disk (file://). "
+                       + "Either serve this folder over http, publish the Google Sheet and fill in config.js, "
+                       + "or load the two CSV files manually below.";
+        else msg += String(e.message||e);
+        setError(msg, true);
+        setStatus("Not loaded.");
+      });
+  }
+
+  function afterLoad(){
+    var now = new Date();
+    var where = state.source.live ? "live Google Sheet" : "local CSV files";
+    setStatus("Loaded from <b>"+where+"</b> &middot; "+
+      state.data.scene.length+" scene/shot items, "+state.data.overall.length+" production-wide "+
+      "&middot; refreshed <b>"+now.toLocaleString()+"</b>");
+    document.getElementById("tabCountScene").textContent   = "("+state.data.scene.length+")";
+    document.getElementById("tabCountOverall").textContent = "("+state.data.overall.length+")";
+    buildFilterOptions();
+    render();
+    document.getElementById("foot").innerHTML =
+      "Source of truth: "+(state.source.live
+        ? "the published Google Sheet (edit the Sheet, then hit Reload here)."
+        : "the CSV files in this folder / <code>generate_seed_csvs.py</code>.")+
+      " &nbsp;Colour = status. Left bar + P-tag = priority (P1 before shoot, P2 before scout, P3 nice-to-have).";
+  }
+
+  /* ---------- UI plumbing ---------- */
+  function setStatus(html){ document.getElementById("statusLine").innerHTML = html; }
+  function setError(msg, withPicker){
+    var box = document.getElementById("errbox");
+    if(!msg){ box.innerHTML=""; return; }
+    var html = '<div class="err">'+msg;
+    if(withPicker){
+      html += '<div style="margin-top:10px" class="filepick">'+
+        '<label class="btn">Load Scene/Shot CSV<input type="file" accept=".csv" id="pickScene" hidden></label>'+
+        '<label class="btn">Load Production-Wide CSV<input type="file" accept=".csv" id="pickOverall" hidden></label>'+
+      '</div>';
+    }
+    html += '</div>';
+    box.innerHTML = html;
+    if(withPicker){
+      wirePicker("pickScene","scene");
+      wirePicker("pickOverall","overall");
+    }
+  }
+  function wirePicker(id, key){
+    var el = document.getElementById(id); if(!el) return;
+    el.addEventListener("change", function(){
+      var f = el.files[0]; if(!f) return;
+      var rd = new FileReader();
+      rd.onload = function(){
+        state.data[key] = toObjects(parseCSV(rd.result));
+        state.source.live = false;
+        if(state.data.scene.length || state.data.overall.length){ setError(""); afterLoad(); }
+      };
+      rd.readAsText(f);
+    });
+  }
+
+  function currentRows(){ return state.data[state.view] || []; }
+
+  function buildFilterOptions(){
+    var rows = currentRows();
+    var scenes = [], cats = [], owners = [];
+    rows.forEach(function(r){
+      var sc = state.view==="scene" ? r["Scene"] : r["Area"];
+      if(sc && scenes.indexOf(sc)<0) scenes.push(sc);
+      if(r["Category"] && cats.indexOf(r["Category"])<0) cats.push(r["Category"]);
+      (r["Owner"]||"").split(",").map(function(x){return x.trim();}).forEach(function(o){
+        if(o && owners.indexOf(o)<0) owners.push(o);
+      });
+    });
+    scenes.sort(function(a,b){ return String(a).localeCompare(String(b),undefined,{numeric:true}); });
+    cats.sort(); owners.sort();
+    fill("fScene", scenes, state.view==="scene" ? "All scenes" : "All areas");
+    fill("fCategory", cats, "All categories");
+    fill("fOwner", owners, "All owners");
+  }
+  function fill(id, values, allLabel){
+    var sel = document.getElementById(id); var keep = sel.value;
+    sel.innerHTML = '<option value="">'+allLabel+'</option>' +
+      values.map(function(v){ return '<option>'+esc(v)+'</option>'; }).join("");
+    if(values.indexOf(keep)>=0) sel.value = keep;
+  }
+
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  function summaryCounts(rows){
+    var m={}; STATUS_ORDER.forEach(function(s){ m[s]=0; });
+    rows.forEach(function(r){
+      var s = r["Status"] || "";
+      if(m[s]==null) m[s]=0;
+      m[s]++;
+    });
+    return m;
+  }
+
+  function render(){
+    var all = currentRows();
+    // summary reflects the full tab (not the filtered view)
+    var counts = summaryCounts(all);
+    var priCounts = {P1:0,P2:0,P3:0};
+    all.forEach(function(r){ if(priCounts[r["Priority"]]!=null) priCounts[r["Priority"]]++; });
+
+    var sum = document.getElementById("summary");
+    sum.innerHTML = STATUS_ORDER.map(function(s){
+      var k = statusKey(s), off = state.mutedStatus[s] ? " off":"";
+      return '<div class="chip'+off+'" data-status="'+s+'">'+
+        '<span class="dot '+k+'"></span>'+s+' <span class="c">'+(counts[s]||0)+'</span></div>';
+    }).join("") +
+    '<div style="width:14px"></div>' +
+    ['P1','P2','P3'].map(function(p){
+      return '<div class="chip pri"><span class="pri '+p+'">'+p+'</span><span class="c">'+priCounts[p]+'</span></div>';
+    }).join("");
+    sum.querySelectorAll(".chip[data-status]").forEach(function(ch){
+      ch.addEventListener("click", function(){
+        var s = ch.getAttribute("data-status");
+        state.mutedStatus[s] = !state.mutedStatus[s];
+        render();
+      });
+    });
+
+    var fScene = document.getElementById("fScene").value;
+    var fCat = document.getElementById("fCategory").value;
+    var fOwner = document.getElementById("fOwner").value;
+    var fText = document.getElementById("fText").value.toLowerCase().trim();
+    var hideDone = document.getElementById("fOpen").checked;
+
+    var rows = all.filter(function(r){
+      if(state.mutedStatus[r["Status"]]) return false;
+      if(hideDone && (r["Status"]==="Decided" || r["Status"]==="Deferred")) return false;
+      var sc = state.view==="scene" ? r["Scene"] : r["Area"];
+      if(fScene && sc !== fScene) return false;
+      if(fCat && r["Category"] !== fCat) return false;
+      if(fOwner && (r["Owner"]||"").indexOf(fOwner) < 0) return false;
+      if(fText){
+        var hay = Object.keys(r).map(function(k){return r[k];}).join(" ").toLowerCase();
+        if(hay.indexOf(fText) < 0) return false;
+      }
+      return true;
+    });
+
+    rows.sort(function(a,b){
+      var pa = a["Priority"]||"P9", pb = b["Priority"]||"P9";
+      if(pa !== pb) return pa < pb ? -1 : 1;
+      var sa = STATUS_ORDER.indexOf(a["Status"]), sb = STATUS_ORDER.indexOf(b["Status"]);
+      if(sa !== sb) return sa - sb;
+      var ka = state.view==="scene" ? a["Scene"] : a["Area"];
+      var kb = state.view==="scene" ? b["Scene"] : b["Area"];
+      return String(ka).localeCompare(String(kb),undefined,{numeric:true});
+    });
+
+    document.getElementById("tableHost").innerHTML = rows.length
+      ? (state.view==="scene" ? sceneTable(rows) : overallTable(rows))
+      : '<div class="empty">No rows match the current filters.</div>';
+  }
+
+  function statusPill(s){ return '<span class="pill st-'+statusKey(s)+'">'+esc(s)+'</span>'; }
+  function priTag(p){ return p ? '<span class="pri '+esc(p)+'">'+esc(p)+'</span>' : ''; }
+  function catTag(c){ return c ? '<span class="cat">'+esc(c)+'</span>' : ''; }
+  function rowClass(r){ return 's-'+statusKey(r["Status"]); }
+
+  function sceneTable(rows){
+    var body = rows.map(function(r){
+      return '<tr class="'+rowClass(r)+'">'+
+        '<td class="cell-scene">'+esc(r["Scene"])+'</td>'+
+        '<td class="cell-shot">'+esc(r["Shot"])+'</td>'+
+        '<td class="cell-item">'+esc(r["Item / Decision"])+'</td>'+
+        '<td class="nowrap">'+catTag(r["Category"])+'</td>'+
+        '<td class="nowrap">'+statusPill(r["Status"])+'</td>'+
+        '<td class="nowrap">'+priTag(r["Priority"])+'</td>'+
+        '<td class="owner">'+esc(r["Owner"])+'</td>'+
+        '<td class="owner">'+esc(r["Needs input from"])+'</td>'+
+        '<td class="nowrap">'+esc(r["Deadline"])+'</td>'+
+        '<td class="cell-notes">'+esc(r["Options / Notes"])+'</td>'+
+        '<td class="src">'+esc(r["Source"])+'</td>'+
+      '</tr>';
+    }).join("");
+    return '<div><table><colgroup>'+
+      '<col style="width:4%"><col style="width:6%"><col style="width:20%"><col style="width:7%">'+
+      '<col style="width:7%"><col style="width:4%"><col style="width:8%"><col style="width:9%">'+
+      '<col style="width:8%"><col style="width:21%"><col style="width:6%"></colgroup><thead><tr>'+
+      '<th>Scene</th><th>Shot</th><th>Item / Decision</th><th>Category</th><th>Status</th>'+
+      '<th>Pri</th><th>Owner</th><th>Needs input</th><th>Deadline</th><th>Options / Notes</th><th>Src</th>'+
+      '</tr></thead><tbody>'+body+'</tbody></table></div>';
+  }
+  function overallTable(rows){
+    var body = rows.map(function(r){
+      return '<tr class="'+rowClass(r)+'">'+
+        '<td class="cell-scene">'+esc(r["Area"])+'</td>'+
+        '<td class="cell-item">'+esc(r["Item / Concern"])+'</td>'+
+        '<td class="nowrap">'+catTag(r["Category"])+'</td>'+
+        '<td class="nowrap">'+statusPill(r["Status"])+'</td>'+
+        '<td class="nowrap">'+priTag(r["Priority"])+'</td>'+
+        '<td class="owner">'+esc(r["Owner"])+'</td>'+
+        '<td class="owner">'+esc(r["Needs input from"])+'</td>'+
+        '<td class="nowrap">'+esc(r["Deadline"])+'</td>'+
+        '<td class="cell-notes">'+esc(r["Notes"])+'</td>'+
+        '<td class="src">'+esc(r["Source"])+'</td>'+
+      '</tr>';
+    }).join("");
+    return '<div><table><colgroup>'+
+      '<col style="width:8%"><col style="width:22%"><col style="width:8%"><col style="width:7%">'+
+      '<col style="width:4%"><col style="width:9%"><col style="width:9%"><col style="width:9%">'+
+      '<col style="width:18%"><col style="width:6%"></colgroup><thead><tr>'+
+      '<th>Area</th><th>Item / Concern</th><th>Category</th><th>Status</th><th>Pri</th>'+
+      '<th>Owner</th><th>Needs input</th><th>Deadline</th><th>Notes</th><th>Src</th>'+
+      '</tr></thead><tbody>'+body+'</tbody></table></div>';
+  }
+
+  /* ---------- events ---------- */
+  document.querySelectorAll(".tab").forEach(function(t){
+    t.addEventListener("click", function(){
+      document.querySelectorAll(".tab").forEach(function(x){ x.classList.remove("active"); });
+      t.classList.add("active");
+      state.view = t.getAttribute("data-view");
+      state.mutedStatus = {};
+      buildFilterOptions();
+      ["fScene","fCategory","fOwner","fText"].forEach(function(id){ document.getElementById(id).value=""; });
+      render();
+    });
+  });
+  ["fScene","fCategory","fOwner","fOpen"].forEach(function(id){
+    document.getElementById(id).addEventListener("change", render);
+  });
+  document.getElementById("fText").addEventListener("input", render);
+  document.getElementById("btnReload").addEventListener("click", load);
+  document.getElementById("btnPrint").addEventListener("click", function(){ window.print(); });
+
+  load();
+})();
+</script>
+</body>
+</html>

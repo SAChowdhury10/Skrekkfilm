@@ -198,7 +198,10 @@
 
   /* ---------- loading ---------- */
   function fetchText(url){
-    return fetch(url, {cache:"no-store"}).then(function(r){
+    // cache-bust: GitHub Pages/CDN caches static files ~10 min, so a plain fetch
+    // can serve a stale CSV for a while after a push. A unique query string dodges it.
+    var bust = url + (url.indexOf("?") < 0 ? "?" : "&") + "_=" + Date.now();
+    return fetch(bust, {cache:"no-store"}).then(function(r){
       if(!r.ok) throw new Error("HTTP "+r.status+" for "+url);
       return r.text();
     });
@@ -379,7 +382,10 @@
   function catTag(c){ return c ? '<span class="cat">'+esc(c)+'</span>' : ''; }
   function rowClass(r){ return 's-'+statusKey(r["Status"]); }
 
-  function idCell(r){ return '<td class="cell-id"><b>'+esc(r["ID"])+'</b></td>'; }
+  function idCell(r){
+    var id = (r["ID"]||"").trim();
+    return '<td class="cell-id">'+(id ? '<b>'+esc(id)+'</b>' : '&mdash;')+'</td>';
+  }
   function clampCell(cls, text){
     var t = esc(text);
     return '<td class="'+cls+'"><div class="clamp" title="'+t+'">'+t+'</div></td>';

@@ -1,0 +1,352 @@
+<style>
+body { font-family: -apple-system, Helvetica, Arial, sans-serif; }
+.scene-group { margin: 22px 0 14px 0; }
+.scene-bar { color:#fff; padding:7px 14px; font-weight:700; font-size:15px; border-radius:5px 5px 0 0; letter-spacing:0.01em; }
+.beat { padding:9px 14px; margin:0; line-height:1.55; font-size:14px; border-left:5px solid; border-bottom:1px solid rgba(0,0,0,0.07); }
+.scene-group .beat:last-of-type { border-radius: 0 0 5px 5px; border-bottom:none; }
+.label { font-weight:700; margin-bottom:6px; font-size:12.5px; text-transform:uppercase; letter-spacing:0.03em; opacity:0.75; }
+.action { color:#555; font-style:italic; margin:4px 0; }
+.char { font-weight:700; margin-top:5px; }
+.char .paren { font-weight:400; font-style:italic; }
+.line { margin:0 0 3px 0; }
+.trans { color:#666; font-style:italic; }
+
+.s1 .scene-bar { background:#2f5fa8; }
+.s1 .beat { border-left-color:#2f5fa8; }
+.s1 .beat:nth-child(odd) { background:#eaf2fc; }
+.s1 .beat:nth-child(even) { background:#d6e7fb; }
+
+.s2 .scene-bar { background:#2f7a4f; }
+.s2 .beat { border-left-color:#2f7a4f; }
+.s2 .beat:nth-child(odd) { background:#eaf7ec; }
+.s2 .beat:nth-child(even) { background:#d3eed8; }
+
+.s3 .scene-bar { background:#a8722f; }
+.s3 .beat { border-left-color:#a8722f; }
+.s3 .beat:nth-child(odd) { background:#fdf3e0; }
+.s3 .beat:nth-child(even) { background:#fbe7c4; }
+
+.s4 .scene-bar { background:#2f8a82; }
+.s4 .beat { border-left-color:#2f8a82; }
+.s4 .beat:nth-child(odd) { background:#e4f7f5; }
+.s4 .beat:nth-child(even) { background:#c9eeea; }
+
+.s5 .scene-bar { background:#6b3fa0; }
+.s5 .beat { border-left-color:#6b3fa0; }
+.s5 .beat:nth-child(odd) { background:#f1eafb; }
+.s5 .beat:nth-child(even) { background:#e0d0f7; }
+
+.s6 .scene-bar { background:#7a7a2f; }
+.s6 .beat { border-left-color:#7a7a2f; }
+.s6 .beat:nth-child(odd) { background:#f4f7de; }
+.s6 .beat:nth-child(even) { background:#e7efb8; }
+
+.s7 .scene-bar { background:#a8375a; }
+.s7 .beat { border-left-color:#a8375a; }
+.s7 .beat:nth-child(odd) { background:#fbeaf0; }
+.s7 .beat:nth-child(even) { background:#f5d2df; }
+
+.s8 .scene-bar { background:#46586b; }
+.s8 .beat { border-left-color:#46586b; }
+.s8 .beat:nth-child(odd) { background:#edf1f5; }
+.s8 .beat:nth-child(even) { background:#dde5ec; }
+</style>
+
+# Une Faible Impression *(A Faint Impression)*
+**Color-coded script** · Rev. 1.3 · Chowdhury & Zaman
+
+> Each scene has its own color; beats within a scene (1A, 1B, 1C…) alternate between two tints of that color so boundaries are easy to spot at a glance. Same 8-scene / 23-beat breakdown as the shot-list worksheet — read them side by side.
+>
+> **Viewing note:** colors render in VS Code Markdown preview, Typora, Obsidian, or a browser. Plain-text viewers and GitHub's web view will show this as uncolored text.
+
+**Outline** — 1 Park Bench (5 beats) · 2 Woods/Boy (1) · 3 Park Road (2) · 4 Woods (1) · 5 Bollard Area (7) · 6 Woods (1) · 7 Lover's Leap (5) · 8 Woods (1)
+
+<div class="scene-group s1">
+<div class="scene-bar">SCENE 1 — EXT. PARK BENCH — SUNRISE</div>
+
+<div class="beat">
+<div class="label">1A · Letter, three tries</div>
+<div class="action">MAN sits contemplatively on a bench, sun rising behind him, ignored. Picks up NOTEBOOK and PEN.</div>
+<div class="char">MAN <span class="paren">(V.O.)</span></div>
+<div class="line">Chère Maman... Je pense à toi. <span class="trans">(Dear Mom... I miss you.)</span></div>
+<div class="action">Unsatisfied, scratches it out. Exhales, starts again.</div>
+<div class="char">MAN <span class="paren">(V.O.)</span></div>
+<div class="line">Chère Maman... Je réfléchissais à l'idée de marche en avant... <span class="trans">(...thinking about progress... reminded me of our train ride from Toulouse to... I can't remember where...)</span></div>
+<div class="action">Still unsatisfied, scratches out again. Final breath.</div>
+<div class="char">MAN <span class="paren">(V.O.)</span></div>
+<div class="line">Maman... Que voulais-tu dire quand tu as dit: «Il faut entendre le mot avec la résonance du monde.» ...parce que le mot— <span class="trans">(...What did you mean: "hear the word with the sound of the world"... because the word—)</span></div>
+</div>
+
+<div class="beat">
+<div class="label">1B · The lost word / WOMAN appears</div>
+<div class="action">MAN forgets the French word for "beckon."</div>
+<div class="char">WOMAN <span class="paren">(O.S.)</span></div>
+<div class="line">Appelle... <span class="trans">[repeats 3×: MAN doesn't notice, then searches for the source, then goes back to his notebook]</span></div>
+<div class="action">MAN remembers: <i>Appelle.</i> Begins writing. A WOMAN, early 30s, is seated on a parallel bench.</div>
+<div class="char">MAN <span class="paren">(V.O.)</span></div>
+<div class="line">Le mot m'appelle loin du confort... <span class="trans">(The word beckons me away from comfort...)</span></div>
+</div>
+
+<div class="beat">
+<div class="label">1C · "Come here often?"</div>
+<div class="char">WOMAN</div><div class="line">Come here often?</div>
+<div class="char">MAN <span class="paren">(surprised)</span></div><div class="line">Huh?</div>
+<div class="char">WOMAN <span class="paren">(louder)</span></div><div class="line">Do you come here often?</div>
+<div class="char">MAN</div><div class="line">Ah... yes. In the mornings, you?</div>
+<div class="char">WOMAN <span class="paren">(smiles)</span></div><div class="line">Wouldn't you know, if you come here often?</div>
+<div class="char">MAN <span class="paren">(smiles back)</span></div><div class="line">Not with certainty.</div>
+<div class="char">WOMAN</div><div class="line">Just passing through. Duluth. Keokuck. Now... as good a stop as any, wouldn't you say?</div>
+<div class="char">MAN</div><div class="line">Why?</div>
+<div class="action">WOMAN gestures toward the landscape with her eyes.</div>
+<div class="char">MAN</div><div class="line">Why are you passing through?</div>
+<div class="action">WOMAN prepares a big anecdote.</div>
+<div class="char">MAN <span class="paren">(cuts her off)</span></div><div class="line">What are you reading?</div>
+</div>
+
+<div class="beat">
+<div class="label">1D · Book &amp; Map</div>
+<div class="char">WOMAN</div><div class="line">Oh, Pushkin.</div>
+<div class="action">Holds up the BOOK — a worn <i>Eugene Onegin</i>.</div>
+<div class="char">MAN</div><div class="line">In Russian?</div>
+<div class="char">WOMAN</div><div class="line">No, translation.</div>
+<div class="char">MAN <span class="paren">(disinterested)</span></div><div class="line">Oh.</div>
+<div class="action">MAN returns to NOTEBOOK. WOMAN pulls out a folded MAP.</div>
+<div class="char">WOMAN</div><div class="line">Would you happen to know the way out?</div>
+<div class="char">MAN</div><div class="line">Straight down. Take a right at the sycamore by the bend. Then you'll hit the main road.</div>
+<div class="char">WOMAN</div><div class="line">What does a sycamore look like?</div>
+<div class="char">MAN</div><div class="line">If you have gone too far, you'll know.</div>
+</div>
+
+<div class="beat">
+<div class="label">1E · Cigarette / wind / paper flies</div>
+<div class="action">MAN closes NOTEBOOK, stands, lights a CIGARETTE. WOMAN folds the map, returns to her book.</div>
+<div class="char">WOMAN <span class="paren">(while reading)</span></div><div class="line">If it's not translatable, why do we bother?</div>
+<div class="char">MAN <span class="paren">(defeated)</span></div><div class="line">Hmm... Feeble meaning is better than nothing at all.</div>
+<div class="action">A gust of wind through the trees. Both surprised.</div>
+<div class="char">WOMAN</div><div class="line">Is it a poem?</div>
+<div class="char">MAN</div><div class="line">Something like that. [Laughs] It doesn't rhyme.</div>
+<div class="action">WOMAN stands, looks into the distance. Stronger gust — MAN's SHEET OF PAPER flies away, twisting in the air. MAN chases it.</div>
+<div class="char">WOMAN</div><div class="line">Hah... He has a very rebellious turn of mind...</div>
+<div class="action">WOMAN slowly follows. MAN picks up the fallen PAPER.</div>
+</div>
+
+</div>
+
+<div class="scene-group s2">
+<div class="scene-bar">SCENE 2 — EXT. WOODS/FOREST — DAYTIME</div>
+
+<div class="beat">
+<div class="label">2A · BOY, alone</div>
+<div class="action">A young BOY, 7, picks up some soil. He thinks he hears his name and turns toward it. What is its source?</div>
+<div class="action">Slowly, he walks. Is he being pulled, or is he searching?</div>
+</div>
+
+</div>
+
+<div class="scene-group s3">
+<div class="scene-bar">SCENE 3 — EXT. PARK ROAD — MOMENTS LATER</div>
+
+<div class="beat">
+<div class="label">3A · Train story / "I misspoke"</div>
+<div class="action">MAN and WOMAN walk the road. MAN puts his LIGHTER in his pocket.</div>
+<div class="char">WOMAN <span class="paren">(comfortable, smoking)</span></div>
+<div class="line">On my way up from Ste. Genevieve, train got delayed... because of another train... Man behind me gets a call from his wife... She's angry because surely he is cheating again... Hah...</div>
+<div class="char">MAN</div><div class="line">You said you came from Keokuck...</div>
+<div class="char">WOMAN</div><div class="line">I misspoke...</div>
+<div class="action">They walk in silence.</div>
+<div class="char">WOMAN <span class="paren">(cont.)</span></div><div class="line">The train stops half a mile too far. He passes her house on the train... to get to her house...</div>
+<div class="char">MAN</div><div class="line">Feels like fate, no?</div>
+<div class="char">WOMAN</div><div class="line">I am indifferent to fate.</div>
+</div>
+
+<div class="beat">
+<div class="label">3B · Half-mile home / small beauty</div>
+<div class="char">MAN</div><div class="line">A half-mile walk isn't too far, if it takes you home.</div>
+<div class="char">WOMAN</div><div class="line">Every time I go home, this tiredness overcomes me...</div>
+<div class="action">MAN and WOMAN look up. They notice a small beauty. Is it a tree? A bird?</div>
+</div>
+
+</div>
+
+<div class="scene-group s4">
+<div class="scene-bar">SCENE 4 — EXT. WOODS — MOMENTS LATER</div>
+
+<div class="beat">
+<div class="label">4A · BOY in the woods / VO over image</div>
+<div class="action">BOY navigates through the woods, cuts through bushes and trees, arrives at an opening.</div>
+<div class="char">WOMAN <span class="paren">(V.O.)</span></div><div class="line">It's so beautiful that you think you discovered it...</div>
+<div class="char">MAN <span class="paren">(V.O.)</span></div><div class="line">And if we didn't?</div>
+<div class="char">WOMAN <span class="paren">(V.O.)</span></div><div class="line">But... it feels like the beginning of a process, rather than an end in itself...</div>
+<div class="char">MAN <span class="paren">(V.O.)</span></div><div class="line">Oh, beauty... [Pause] The blindness to which it gave rise... If only we could see.</div>
+<div class="char">WOMAN <span class="paren">(V.O.)</span></div><div class="line">What would we see?</div>
+<div class="char">MAN <span class="paren">(V.O.)</span></div><div class="line">We would see straight away that something is true, and something is false.</div>
+</div>
+
+</div>
+
+<div class="scene-group s5">
+<div class="scene-bar">SCENE 5 — EXT. BOLLARD AREA/PARK — MOMENTS LATER</div>
+
+<div class="beat">
+<div class="label">5A · Cigarette / stay another day</div>
+<div class="action">MAN and WOMAN weave through a set of bollards.</div>
+<div class="char">MAN</div><div class="line">Cigarette?</div>
+<div class="char">WOMAN</div><div class="line">No...</div>
+<div class="action">Man lights one more CIGARETTE for himself.</div>
+<div class="char">MAN</div><div class="line">When do you leave?</div>
+<div class="char">WOMAN</div><div class="line">Soon.</div>
+<div class="char">MAN</div><div class="line">Stay another day. See the city.</div>
+<div class="char">WOMAN</div><div class="line">No...</div>
+<div class="char">MAN</div><div class="line">What's the hurry?</div>
+<div class="action">MAN and WOMAN sit on bollards.</div>
+</div>
+
+<div class="beat">
+<div class="label">5B · Breath / two sunrises / L'avenir</div>
+<div class="char">WOMAN</div><div class="line">Time... Maybe on a cooler, quieter day, I would have said yes...</div>
+<div class="action">MAN blows into the air — you can see his breath. Is it not cool enough? WOMAN smiles.</div>
+<div class="char">MAN</div><div class="line">It takes two sunrises to know this town...</div>
+<div class="char">WOMAN</div><div class="line">L'avenir nous prend les bras... Or something. <span class="trans">(The future seizes us by the arms — misspoken; she meant "L'avenir nous tend les bras/The future awaits us...")</span></div>
+<div class="action">MAN is shaken by the phrase. He stops, trying to understand.</div>
+</div>
+
+<div class="beat">
+<div class="label">5C · Wedding / Guatemala</div>
+<div class="char">WOMAN <span class="paren">(cont.)</span></div><div class="line">Besides, I can't disappear. I'm to be wed in a month. Some altar requires my presence.</div>
+<div class="char">MAN</div><div class="line">Oh, congratulations. Where's your—</div>
+<div class="char">WOMAN</div><div class="line">Guatemala.</div>
+<div class="char">MAN</div><div class="line">What for?</div>
+<div class="char">WOMAN</div><div class="line">Digging wells.</div>
+<div class="char">MAN</div><div class="line">Oh, commendable.</div>
+<div class="char">WOMAN</div><div class="line">It's what drew me to him.</div>
+</div>
+
+<div class="beat">
+<div class="label">5D · Separation / different memories</div>
+<div class="action">WOMAN stands, takes a few steps.</div>
+<div class="char">MAN</div><div class="line">And how do you manage the separation?</div>
+<div class="action">WOMAN walks back, sits on a closer bollard.</div>
+<div class="char">WOMAN</div><div class="line">I don't think about that. [Pauses] To remember one thing while excluding everything else is a separation in itself.</div>
+<div class="char">MAN</div><div class="line">Still it must be...</div>
+<div class="char">WOMAN</div><div class="line">From time to time... And from time to time he sends me photos of water systems and children with strange-shaped hats.</div>
+<div class="action">MAN gets up and walks away. WOMAN follows.</div>
+<div class="char">MAN</div><div class="line">But you're creating different memories...</div>
+<div class="char">WOMAN</div><div class="line">All memories are an invention of repression.</div>
+</div>
+
+<div class="beat">
+<div class="label">5E · Daydream / Eden / memory</div>
+<div class="action">They walk in silence.</div>
+<div class="char">WOMAN <span class="paren">(cont.)</span></div><div class="line">Human consciousness is oriented towards what hasn't arrived... You cannot live without daydreaming...</div>
+<div class="char">MAN</div><div class="line">I think there is another way...</div>
+<div class="char">WOMAN</div><div class="line">Those who can dream of the Garden of Eden are-</div>
+<div class="char">MAN <span class="paren">(cuts her off)</span></div><div class="line">Eden is a memory...</div>
+<div class="char">WOMAN</div><div class="line">To not dream means to die. And it's never easy to die.</div>
+<div class="char">MAN</div><div class="line">You cannot live without memory... It's never easy to die.</div>
+<div class="char">WOMAN</div><div class="line">Feel that?</div>
+<div class="char">MAN</div><div class="line">What?</div>
+<div class="char">WOMAN</div><div class="line">A hint of hatred dwells in that belief... [Pause] The heart's memory eliminates the bad and magnifies the good. The mind's is quite the opposite. Either way, it's catering to first-world issues through a first-world lens...</div>
+</div>
+
+<div class="beat">
+<div class="label">5F · Bourgeois / language / "read me"</div>
+<div class="char">MAN</div><div class="line">Tell me more.</div>
+<div class="char">WOMAN</div><div class="line">The past. It's a Bourgeois self-interest... And it likes to draw all other interest into its own failure...</div>
+<div class="char">MAN</div><div class="line">Bourgeois?</div>
+<div class="action">MAN looks down at his clothes.</div>
+<div class="char">WOMAN</div><div class="line">My words poorly portray my thoughts...</div>
+<div class="char">MAN</div><div class="line">Everything first sneaks in through language. Action comes later... Read me from your book.</div>
+<div class="action">WOMAN reads from book. <i>(Insert passage)</i></div>
+<div class="char">MAN</div><div class="line">I doubt you ever even notice when the skies change from day to night...</div>
+<div class="char">WOMAN</div><div class="line">Hah... How can you tell?</div>
+<div class="char">MAN</div><div class="line">The way you read...</div>
+</div>
+
+<div class="beat">
+<div class="label">5G · Jacket / genealogy</div>
+<div class="action">WOMAN puts the book in her jacket pocket...</div>
+<div class="char">MAN</div><div class="line">A beautiful jacket...</div>
+<div class="char">WOMAN</div><div class="line">It was my mother's...</div>
+<div class="char">MAN</div><div class="line">It reeks of genealogy... [Pause] The best color for a jacket... and for the leaves...</div>
+<div class="action">MAN walks away.</div>
+</div>
+
+</div>
+
+<div class="scene-group s6">
+<div class="scene-bar">SCENE 6 — EXT. WOODS — CONTINUOUS</div>
+
+<div class="beat">
+<div class="label">6A · BOY finds the bed/manger</div>
+<div class="action">BOY walks through the opening and sees a BED/MANGER in the middle of the woods.</div>
+<div class="action">He slowly makes his way to it. He runs his hand over the sheets. He gets on.</div>
+<div class="action">He starts jumping. Slowly, then faster.</div>
+<div class="action">He starts to turn. Suddenly, he stops. He sees something. Tears well in his eyes.</div>
+<div class="action">A woman is standing in the distance.</div>
+</div>
+
+</div>
+
+<div class="scene-group s7">
+<div class="scene-bar">SCENE 7 — EXT. LOVER'S LEAP/PARK — MOMENTS LATER</div>
+
+<div class="beat">
+<div class="label">7A · Translation / what is lost</div>
+<div class="action">MAN and WOMAN sit on a ledge. WOMAN reads from her book, pauses.</div>
+<div class="char">WOMAN</div><div class="line">So you hate translations?</div>
+<div class="char">MAN</div><div class="line">I don't hate them. In fact, I succumb to them.</div>
+<div class="char">WOMAN</div><div class="line">But nothing can ever be transmitted in its entirety. Always a filtered remainder.</div>
+<div class="char">MAN</div><div class="line">So, what is lost?</div>
+<div class="char">WOMAN</div><div class="line">It's lost on me now. But, we can't help ourselves.</div>
+<div class="char">MAN</div><div class="line">And why not?</div>
+</div>
+
+<div class="beat">
+<div class="label">7B · Preservation / twisted words / language as filter</div>
+<div class="action">WOMAN contemplates.</div>
+<div class="char">MAN <span class="paren">(mockingly)</span></div><div class="line">Ah, so for preservation?</div>
+<div class="char">WOMAN</div><div class="line">You twist my words.</div>
+<div class="char">MAN</div><div class="line">You twist your own words! Language itself is a filtering of its own.</div>
+<div class="char">WOMAN</div><div class="line">Language is just a mode of communication.</div>
+<div class="char">MAN</div><div class="line">Yes, but not poetry. [Pause] Communication transmits what is already known. But what about the unknown? [Pause] What about the moment when something within the human being becomes too complete, too charged, too coherent to remain unexpressed... and therefore must take shape in the world?</div>
+</div>
+
+<div class="beat">
+<div class="label">7C · "A becoming?"</div>
+<div class="char">WOMAN <span class="paren">(mockingly)</span></div><div class="line">Oh, so a becoming?</div>
+<div class="char">MAN</div><div class="line">You complicate the solution much beyond the problem itself... A poem makes you feel that something was felt. Expression is its arrival.</div>
+</div>
+
+<div class="beat">
+<div class="label">7D · Futural / elegiac / presence of absence</div>
+<div class="char">WOMAN</div><div class="line">Beauty is futural in action.</div>
+<div class="char">MAN</div><div class="line">It is elegaic in substance.</div>
+<div class="action">Sit in silence.</div>
+<div class="char">MAN</div><div class="line">If it is both, then perhaps it can never be perceived.</div>
+<div class="char">WOMAN</div><div class="line">Beauty isn't a prisoner of perception. It's the master of it, and in that sense, beauty is simply presence.</div>
+<div class="char">MAN</div><div class="line">And what about the presence of absence? I find that incredibly beautiful.</div>
+<div class="char">WOMAN</div><div class="line">You must have your reasons.</div>
+<div class="action">MAN chuckles.</div>
+</div>
+
+<div class="beat">
+<div class="label">7E · Measured vs. felt / one with Nature</div>
+<div class="char">WOMAN</div><div class="line">Some want time measured out. Some want it felt.</div>
+<div class="action">Sit in silence, deadlocked. This time, Nature remains silent too. Instead, the trees, the skies, beauty itself, listen in. MAN and WOMAN are one with Nature.</div>
+<div class="char">WOMAN</div><div class="line">How old are the trees? The skies?</div>
+<div class="char">MAN</div><div class="line">And the wind?</div>
+<div class="char">WOMAN</div><div class="line">It's hard to say.</div>
+<div class="char">MAN</div><div class="line">It's hard to know.</div>
+</div>
+
+</div>
+
+<div class="scene-group s8">
+<div class="scene-bar">SCENE 8 — EXT. WOODS — CONTINUOUS</div>
+
+<div class="beat">
+<div class="label">8A · Final image</div>
+<div class="action">WOMAN, now old, stands in the forest. She looks somberly into the distance.</div>
+</div>
+
+</div>

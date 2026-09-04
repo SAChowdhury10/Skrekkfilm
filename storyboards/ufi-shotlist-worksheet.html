@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>UFI Shot List Worksheet</title>
+<style>
+  @page { size: letter; margin: 0.45in 0.5in; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+    color: #111;
+    margin: 0;
+    font-size: 9.5pt;
+  }
+  header.doc {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid #111;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+  header.doc h1 {
+    font-size: 15pt;
+    margin: 0 0 2px 0;
+    letter-spacing: 0.02em;
+  }
+  header.doc .sub {
+    font-size: 8.5pt;
+    color: #444;
+  }
+  header.doc .meta {
+    text-align: right;
+    font-size: 8pt;
+    color: #444;
+    line-height: 1.5;
+  }
+  .legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 7.6pt;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 10px;
+    background: #fafafa;
+  }
+  .legend b { color: #000; }
+  .scene-header {
+    background: #111;
+    color: #fff;
+    padding: 3px 8px;
+    font-size: 9.5pt;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 3px 3px 0 0;
+    margin-top: 12px;
+    break-after: avoid-page;
+    break-inside: avoid;
+  }
+  .scene-header .num {
+    background: #fff;
+    color: #111;
+    padding: 0 6px;
+    border-radius: 2px;
+    margin-right: 8px;
+    font-size: 8.5pt;
+  }
+  .beat {
+    display: flex;
+    gap: 8px;
+    border: 1px solid #bbb;
+    border-top: none;
+    padding: 5px 7px;
+    break-inside: avoid;
+  }
+  .beat:nth-of-type(odd) { background: #fcfcfc; }
+  .script {
+    flex: 0 0 39%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 7.8pt;
+    line-height: 1.32;
+    padding-right: 6px;
+    border-right: 1px dashed #ccc;
+  }
+  .beatlabel {
+    display: inline-block;
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 7.5pt;
+    background: #e5e5e5;
+    padding: 0px 5px;
+    border-radius: 2px;
+    margin-bottom: 3px;
+  }
+  .action { color: #555; font-style: italic; margin: 2px 0; }
+  .char { font-weight: 700; margin-top: 3px; }
+  .char .paren { font-weight: 400; font-style: italic; }
+  .line { margin: 0 0 1px 0; }
+  .line .trans { color: #666; font-style: italic; }
+  .paren-line { color: #555; font-style: italic; margin: 0; }
+  .shotgrid {
+    flex: 1;
+    background-image: repeating-linear-gradient(to bottom, transparent, transparent 14px, #e2e2e2 14px, #e2e2e2 15px);
+    background-position: 0 18px;
+  }
+  table.shots {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 7.8pt;
+    table-layout: fixed;
+  }
+  table.shots th {
+    background: #eee;
+    border: 1px solid #999;
+    padding: 1px 3px;
+    text-align: left;
+    font-size: 7.3pt;
+  }
+  table.shots td {
+    border: 1px solid #bbb;
+    height: 15px;
+    padding: 1px 3px;
+  }
+  table.shots th.c1, table.shots td.c1 { width: 7%; }
+  table.shots th.c2, table.shots td.c2 { width: 15%; }
+  table.shots th.c3, table.shots td.c3 { width: 20%; }
+  table.shots th.c4, table.shots td.c4 { width: 12%; }
+  .scenenotes {
+    border: 1px solid #bbb;
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    padding: 4px 8px 6px 8px;
+    font-size: 7.6pt;
+    color: #444;
+    break-inside: avoid;
+  }
+  .scenenotes b { color: #111; }
+  .ruled {
+    border-bottom: 1px solid #ccc;
+    height: 13px;
+    margin-top: 3px;
+  }
+  footer.doc {
+    margin-top: 10px;
+    font-size: 7pt;
+    color: #999;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header class="doc">
+  <div>
+    <h1>UNE FAIBLE IMPRESSION <span style="font-weight:400;">— Shot List Braindump</span></h1>
+    <div class="sub">Une Faible Impression <i>(A Faint Impression)</i> · Rev. 1.3 · Chowdhury &amp; Zaman</div>
+  </div>
+  <div class="meta">
+    No-computer session · 2026-08-13<br>
+    8 scenes · 23 beats<br>
+    Star (★) must-haves · Circle favorites
+  </div>
+</header>
+
+<div class="legend">
+  <span><b>SIZE</b> — WS wide · MS medium · MCU med-close · CU close · ECU extreme close · 2S two-shot · INS insert</span>
+  <span><b>ANGLE/MOVE</b> — OTS over-shoulder · POV · HA/LA high/low angle · STAT static · HH handheld · DOLLY · PAN · TILT · TRACK</span>
+</div>
+
+<!-- ============ SCENE 1 ============ -->
+<div class="scene-header"><span class="num">SCENE 1</span>EXT. PARK BENCH — SUNRISE</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">1A · Letter, three tries</div>
+    <div class="action">MAN sits on a bench, sun rising behind him, ignored. Picks up NOTEBOOK and PEN.</div>
+    <div class="char">MAN <span class="paren">(V.O.)</span></div>
+    <div class="line">Chère Maman... Je pense à toi. <span class="trans">(Dear Mom... I miss you.)</span></div>
+    <div class="action">Unsatisfied, scratches it out. Exhales, starts again.</div>
+    <div class="char">MAN <span class="paren">(V.O.)</span></div>
+    <div class="line">Chère Maman... Je réfléchissais à l'idée de marche en avant... <span class="trans">(...thinking about progress... reminded me of our train ride from Toulouse to... I can't remember where...)</span></div>
+    <div class="action">Still unsatisfied, scratches out again. Final breath.</div>
+    <div class="char">MAN <span class="paren">(V.O.)</span></div>
+    <div class="line">Maman... Que voulais-tu dire quand tu as dit: «Il faut entendre le mot avec la résonance du monde.» ...parce que le mot— <span class="trans">(...What did you mean: "hear the word with the sound of the world"... because the word—)</span></div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">1B · The lost word / WOMAN appears</div>
+    <div class="action">MAN forgets the French word for "beckon."</div>
+    <div class="char">WOMAN <span class="paren">(O.S.)</span></div>
+    <div class="line">Appelle... <span class="trans">[repeats 3×: MAN doesn't notice, then searches for the source, then goes back to his notebook]</span></div>
+    <div class="action">MAN remembers: <i>Appelle.</i> Begins writing. A WOMAN, early 30s, is seated on a parallel bench.</div>
+    <div class="char">MAN <span class="paren">(V.O.)</span></div>
+    <div class="line">Le mot m'appelle loin du confort... <span class="trans">(The word beckons me away from comfort...)</span></div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">1C · "Come here often?"</div>
+    <div class="char">WOMAN</div><div class="line">Come here often?</div>
+    <div class="char">MAN <span class="paren">(surprised)</span></div><div class="line">Huh?</div>
+    <div class="char">WOMAN <span class="paren">(louder)</span></div><div class="line">Do you come here often?</div>
+    <div class="char">MAN</div><div class="line">Ah... yes. In the mornings, you?</div>
+    <div class="char">WOMAN <span class="paren">(smiles)</span></div><div class="line">Wouldn't you know, if you come here often?</div>
+    <div class="char">MAN <span class="paren">(smiles back)</span></div><div class="line">Not with certainty.</div>
+    <div class="char">WOMAN</div><div class="line">Just passing through. Duluth. Keokuck. Now... as good a stop as any, wouldn't you say?</div>
+    <div class="char">MAN</div><div class="line">Why?</div>
+    <div class="action">WOMAN gestures toward the landscape with her eyes.</div>
+    <div class="char">MAN</div><div class="line">Why are you passing through?</div>
+    <div class="action">WOMAN prepares a big anecdote.</div>
+    <div class="char">MAN <span class="paren">(cuts her off)</span></div><div class="line">What are you reading?</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">1D · Book &amp; Map</div>
+    <div class="char">WOMAN</div><div class="line">Oh, Pushkin.</div>
+    <div class="action">Holds up the BOOK — a worn <i>Eugene Onegin</i>.</div>
+    <div class="char">MAN</div><div class="line">In Russian?</div>
+    <div class="char">WOMAN</div><div class="line">No, translation.</div>
+    <div class="char">MAN <span class="paren">(disinterested)</span></div><div class="line">Oh.</div>
+    <div class="action">MAN returns to NOTEBOOK. WOMAN pulls out a folded MAP.</div>
+    <div class="char">WOMAN</div><div class="line">Would you happen to know the way out?</div>
+    <div class="char">MAN</div><div class="line">Straight down. Take a right at the sycamore by the bend. Then you'll hit the main road.</div>
+    <div class="char">WOMAN</div><div class="line">What does a sycamore look like?</div>
+    <div class="char">MAN</div><div class="line">If you have gone too far, you'll know.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">1E · Cigarette / wind / paper flies</div>
+    <div class="action">MAN closes NOTEBOOK, stands, lights a CIGARETTE. WOMAN folds the map, returns to her book.</div>
+    <div class="char">WOMAN <span class="paren">(while reading)</span></div><div class="line">If it's not translatable, why do we bother?</div>
+    <div class="char">MAN <span class="paren">(defeated)</span></div><div class="line">Hmm... Feeble meaning is better than nothing at all.</div>
+    <div class="action">A gust of wind through the trees. Both surprised.</div>
+    <div class="char">WOMAN</div><div class="line">Is it a poem?</div>
+    <div class="char">MAN</div><div class="line">Something like that. [Laughs] It doesn't rhyme.</div>
+    <div class="action">WOMAN stands, looks into the distance. Stronger gust — MAN's SHEET OF PAPER flies away, twisting in the air. MAN chases it.</div>
+    <div class="char">WOMAN</div><div class="line">Hah... He has a very rebellious turn of mind...</div>
+    <div class="action">WOMAN slowly follows. MAN picks up the fallen PAPER.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="scenenotes"><b>SCENE 1 NOTES</b> — master / coverage / transitions
+  <div class="ruled"></div><div class="ruled"></div>
+</div>
+
+<!-- ============ SCENE 2 ============ -->
+<div class="scene-header"><span class="num">SCENE 2</span>EXT. WOODS/FOREST — DAYTIME</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">2A · BOY, alone</div>
+    <div class="action">A young BOY, 7, picks up some soil. He thinks he hears his name and turns toward it. What is its source?</div>
+    <div class="action">Slowly, he walks. Is he being pulled, or is he searching?</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="scenenotes"><b>SCENE 2 NOTES</b> — master / coverage / transitions
+  <div class="ruled"></div>
+</div>
+
+<!-- ============ SCENE 3 ============ -->
+<div class="scene-header"><span class="num">SCENE 3</span>EXT. PARK ROAD — MOMENTS LATER</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">3A · Train story / "I misspoke"</div>
+    <div class="action">MAN and WOMAN walk the road. MAN puts his LIGHTER in his pocket.</div>
+    <div class="char">WOMAN <span class="paren">(comfortable, smoking)</span></div>
+    <div class="line">On my way up from Ste. Genevieve, train got delayed... because of another train... Man behind me gets a call from his wife... She's angry because surely he is cheating again... Hah...</div>
+    <div class="char">MAN</div><div class="line">You said you came from Keokuck...</div>
+    <div class="char">WOMAN</div><div class="line">I misspoke...</div>
+    <div class="action">They walk in silence.</div>
+    <div class="char">WOMAN <span class="paren">(cont.)</span></div><div class="line">The train stops half a mile too far. He passes her house on the train... to get to her house...</div>
+    <div class="char">MAN</div><div class="line">Feels like fate, no?</div>
+    <div class="char">WOMAN</div><div class="line">I am indifferent to fate.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">3B · Half-mile home / small beauty</div>
+    <div class="char">MAN</div><div class="line">A half-mile walk isn't too far, if it takes you home.</div>
+    <div class="char">WOMAN</div><div class="line">Every time I go home, this tiredness overcomes me...</div>
+    <div class="action">MAN and WOMAN look up. They notice a small beauty. Is it a tree? A bird?</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="scenenotes"><b>SCENE 3 NOTES</b> — master / coverage / transitions
+  <div class="ruled"></div><div class="ruled"></div>
+</div>
+
+<!-- ============ SCENE 4 ============ -->
+<div class="scene-header"><span class="num">SCENE 4</span>EXT. WOODS — MOMENTS LATER</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">4A · BOY in the woods / VO over image</div>
+    <div class="action">BOY navigates through the woods, cuts through bushes and trees, arrives at an opening.</div>
+    <div class="char">WOMAN <span class="paren">(V.O.)</span></div><div class="line">It's so beautiful that you think you discovered it...</div>
+    <div class="char">MAN <span class="paren">(V.O.)</span></div><div class="line">And if we didn't?</div>
+    <div class="char">WOMAN <span class="paren">(V.O.)</span></div><div class="line">But... it feels like the beginning of a process, rather than an end in itself...</div>
+    <div class="char">MAN <span class="paren">(V.O.)</span></div><div class="line">Oh, beauty... [Pause] The blindness to which it gave rise... If only we could see.</div>
+    <div class="char">WOMAN <span class="paren">(V.O.)</span></div><div class="line">What would we see?</div>
+    <div class="char">MAN <span class="paren">(V.O.)</span></div><div class="line">We would see straight away that something is true, and something is false.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="scenenotes"><b>SCENE 4 NOTES</b> — master / coverage / transitions
+  <div class="ruled"></div>
+</div>
+
+<!-- ============ SCENE 5 ============ -->
+<div class="scene-header"><span class="num">SCENE 5</span>EXT. BOLLARD AREA/PARK — MOMENTS LATER</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">5A · Cigarette / stay another day</div>
+    <div class="action">MAN and WOMAN weave through a set of bollards.</div>
+    <div class="char">MAN</div><div class="line">Cigarette?</div>
+    <div class="char">WOMAN</div><div class="line">No...</div>
+    <div class="action">Man lights one more CIGARETTE for himself.</div>
+    <div class="char">MAN</div><div class="line">When do you leave?</div>
+    <div class="char">WOMAN</div><div class="line">Soon.</div>
+    <div class="char">MAN</div><div class="line">Stay another day. See the city.</div>
+    <div class="char">WOMAN</div><div class="line">No...</div>
+    <div class="char">MAN</div><div class="line">What's the hurry?</div>
+    <div class="action">MAN and WOMAN sit on bollards.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">5B · Breath / two sunrises / L'avenir</div>
+    <div class="char">WOMAN</div><div class="line">Time... Maybe on a cooler, quieter day, I would have said yes...</div>
+    <div class="action">MAN blows into the air — you can see his breath. Is it not cool enough? WOMAN smiles.</div>
+    <div class="char">MAN</div><div class="line">It takes two sunrises to know this town...</div>
+    <div class="char">WOMAN</div><div class="line">L'avenir nous prend les bras... Or something. <span class="trans">(The future seizes us by the arms — misspoken; she meant "L'avenir nous tend les bras/The future awaits us...")</span></div>
+    <div class="action">MAN is shaken by the phrase. He stops, trying to understand.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">5C · Wedding / Guatemala</div>
+    <div class="char">WOMAN <span class="paren">(cont.)</span></div><div class="line">Besides, I can't disappear. I'm to be wed in a month. Some altar requires my presence.</div>
+    <div class="char">MAN</div><div class="line">Oh, congratulations. Where's your—</div>
+    <div class="char">WOMAN</div><div class="line">Guatemala.</div>
+    <div class="char">MAN</div><div class="line">What for?</div>
+    <div class="char">WOMAN</div><div class="line">Digging wells.</div>
+    <div class="char">MAN</div><div class="line">Oh, commendable.</div>
+    <div class="char">WOMAN</div><div class="line">It's what drew me to him.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">5D · Separation / different memories</div>
+    <div class="action">WOMAN stands, takes a few steps.</div>
+    <div class="char">MAN</div><div class="line">And how do you manage the separation?</div>
+    <div class="action">WOMAN walks back, sits on a closer bollard.</div>
+    <div class="char">WOMAN</div><div class="line">I don't think about that. [Pauses] To remember one thing while excluding everything else is a separation in itself.</div>
+    <div class="char">MAN</div><div class="line">Still it must be...</div>
+    <div class="char">WOMAN</div><div class="line">From time to time... And from time to time he sends me photos of water systems and children with strange-shaped hats.</div>
+    <div class="action">MAN gets up and walks away. WOMAN follows.</div>
+    <div class="char">MAN</div><div class="line">But you're creating different memories...</div>
+    <div class="char">WOMAN</div><div class="line">All memories are an invention of repression.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">5E · Daydream / Eden / memory</div>
+    <div class="action">They walk in silence.</div>
+    <div class="char">WOMAN <span class="paren">(cont.)</span></div><div class="line">Human consciousness is oriented towards what hasn't arrived... You cannot live without daydreaming...</div>
+    <div class="char">MAN</div><div class="line">I think there is another way...</div>
+    <div class="char">WOMAN</div><div class="line">Those who can dream of the Garden of Eden are-</div>
+    <div class="char">MAN <span class="paren">(cuts her off)</span></div><div class="line">Eden is a memory...</div>
+    <div class="char">WOMAN</div><div class="line">To not dream means to die. And it's never easy to die.</div>
+    <div class="char">MAN</div><div class="line">You cannot live without memory... It's never easy to die.</div>
+    <div class="char">WOMAN</div><div class="line">Feel that?</div>
+    <div class="char">MAN</div><div class="line">What?</div>
+    <div class="char">WOMAN</div><div class="line">A hint of hatred dwells in that belief... [Pause] The heart's memory eliminates the bad and magnifies the good. The mind's is quite the opposite. Either way, it's catering to first-world issues through a first-world lens...</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">5F · Bourgeois / language / "read me"</div>
+    <div class="char">MAN</div><div class="line">Tell me more.</div>
+    <div class="char">WOMAN</div><div class="line">The past. It's a Bourgeois self-interest... And it likes to draw all other interest into its own failure...</div>
+    <div class="char">MAN</div><div class="line">Bourgeois?</div>
+    <div class="action">MAN looks down at his clothes.</div>
+    <div class="char">WOMAN</div><div class="line">My words poorly portray my thoughts...</div>
+    <div class="char">MAN</div><div class="line">Everything first sneaks in through language. Action comes later... Read me from your book.</div>
+    <div class="action">WOMAN reads from book. <i>(Insert passage)</i></div>
+    <div class="char">MAN</div><div class="line">I doubt you ever even notice when the skies change from day to night...</div>
+    <div class="char">WOMAN</div><div class="line">Hah... How can you tell?</div>
+    <div class="char">MAN</div><div class="line">The way you read...</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">5G · Jacket / genealogy</div>
+    <div class="action">WOMAN puts the book in her jacket pocket...</div>
+    <div class="char">MAN</div><div class="line">A beautiful jacket...</div>
+    <div class="char">WOMAN</div><div class="line">It was my mother's...</div>
+    <div class="char">MAN</div><div class="line">It reeks of genealogy... [Pause] The best color for a jacket... and for the leaves...</div>
+    <div class="action">MAN walks away.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="scenenotes"><b>SCENE 5 NOTES</b> — master / coverage / transitions (longest scene — consider a coverage pattern to reuse across beats)
+  <div class="ruled"></div><div class="ruled"></div>
+</div>
+
+<!-- ============ SCENE 6 ============ -->
+<div class="scene-header"><span class="num">SCENE 6</span>EXT. WOODS — CONTINUOUS</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">6A · BOY finds the bed/manger</div>
+    <div class="action">BOY walks through the opening and sees a BED/MANGER in the middle of the woods.</div>
+    <div class="action">He slowly makes his way to it. He runs his hand over the sheets. He gets on.</div>
+    <div class="action">He starts jumping. Slowly, then faster.</div>
+    <div class="action">He starts to turn. Suddenly, he stops. He sees something. Tears well in his eyes.</div>
+    <div class="action">A woman is standing in the distance.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="scenenotes"><b>SCENE 6 NOTES</b> — master / coverage / transitions
+  <div class="ruled"></div>
+</div>
+
+<!-- ============ SCENE 7 ============ -->
+<div class="scene-header"><span class="num">SCENE 7</span>EXT. LOVER'S LEAP/PARK — MOMENTS LATER</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">7A · Translation / what is lost</div>
+    <div class="action">MAN and WOMAN sit on a ledge. WOMAN reads from her book, pauses.</div>
+    <div class="char">WOMAN</div><div class="line">So you hate translations?</div>
+    <div class="char">MAN</div><div class="line">I don't hate them. In fact, I succumb to them.</div>
+    <div class="char">WOMAN</div><div class="line">But nothing can ever be transmitted in its entirety. Always a filtered remainder.</div>
+    <div class="char">MAN</div><div class="line">So, what is lost?</div>
+    <div class="char">WOMAN</div><div class="line">It's lost on me now. But, we can't help ourselves.</div>
+    <div class="char">MAN</div><div class="line">And why not?</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">7B · Preservation / twisted words / language as filter</div>
+    <div class="action">WOMAN contemplates.</div>
+    <div class="char">MAN <span class="paren">(mockingly)</span></div><div class="line">Ah, so for preservation?</div>
+    <div class="char">WOMAN</div><div class="line">You twist my words.</div>
+    <div class="char">MAN</div><div class="line">You twist your own words! Language itself is a filtering of its own.</div>
+    <div class="char">WOMAN</div><div class="line">Language is just a mode of communication.</div>
+    <div class="char">MAN</div><div class="line">Yes, but not poetry. [Pause] Communication transmits what is already known. But what about the unknown? [Pause] What about the moment when something within the human being becomes too complete, too charged, too coherent to remain unexpressed... and therefore must take shape in the world?</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">7C · "A becoming?"</div>
+    <div class="char">WOMAN <span class="paren">(mockingly)</span></div><div class="line">Oh, so a becoming?</div>
+    <div class="char">MAN</div><div class="line">You complicate the solution much beyond the problem itself... A poem makes you feel that something was felt. Expression is its arrival.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">7D · Futural / elegiac / presence of absence</div>
+    <div class="char">WOMAN</div><div class="line">Beauty is futural in action.</div>
+    <div class="char">MAN</div><div class="line">It is elegaic in substance.</div>
+    <div class="action">Sit in silence.</div>
+    <div class="char">MAN</div><div class="line">If it is both, then perhaps it can never be perceived.</div>
+    <div class="char">WOMAN</div><div class="line">Beauty isn't a prisoner of perception. It's the master of it, and in that sense, beauty is simply presence.</div>
+    <div class="char">MAN</div><div class="line">And what about the presence of absence? I find that incredibly beautiful.</div>
+    <div class="char">WOMAN</div><div class="line">You must have your reasons.</div>
+    <div class="action">MAN chuckles.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">7E · Measured vs. felt / one with Nature</div>
+    <div class="char">WOMAN</div><div class="line">Some want time measured out. Some want it felt.</div>
+    <div class="action">Sit in silence, deadlocked. This time, Nature remains silent too. Instead, the trees, the skies, beauty itself, listen in. MAN and WOMAN are one with Nature.</div>
+    <div class="char">WOMAN</div><div class="line">How old are the trees? The skies?</div>
+    <div class="char">MAN</div><div class="line">And the wind?</div>
+    <div class="char">WOMAN</div><div class="line">It's hard to say.</div>
+    <div class="char">MAN</div><div class="line">It's hard to know.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="scenenotes"><b>SCENE 7 NOTES</b> — master / coverage / transitions
+  <div class="ruled"></div><div class="ruled"></div>
+</div>
+
+<!-- ============ SCENE 8 ============ -->
+<div class="scene-header"><span class="num">SCENE 8</span>EXT. WOODS — CONTINUOUS</div>
+
+<div class="beat">
+  <div class="script">
+    <div class="beatlabel">8A · Final image</div>
+    <div class="action">WOMAN, now old, stands in the forest. She looks somberly into the distance.</div>
+  </div>
+  <div class="shotgrid">
+    <table class="shots">
+      <tr><th class="c1">#</th><th class="c2">SIZE</th><th class="c3">ANGLE/MOVE</th><th class="c4">LENS</th><th>NOTES</th></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+      <tr><td class="c1"></td><td class="c2"></td><td class="c3"></td><td class="c4"></td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="scenenotes"><b>SCENE 8 NOTES</b> — master / coverage / transitions
+  <div class="ruled"></div>
+</div>
+
+<footer class="doc">Une Faible Impression — Shot List Braindump — Rev. 1.3</footer>
+
+</body>
+</html>

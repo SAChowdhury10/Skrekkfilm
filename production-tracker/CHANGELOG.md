@@ -5,6 +5,45 @@ is recorded here, newest first. Rows are referenced by ID (`SS-##`, `PW-##`).
 
 ---
 
+## 2026-09-13 — Runtime lock, Scene 1→3 redesign, PD audit, Sam prep
+
+From four Zoom sessions: **2026-09-10** (runtime/pacing + PD audit), **2026-09-11**
+(Scene 1→3 transition redesign + weekend scouting), and **2026-09-13** (final
+runtime lock + Scene 1 shot-by-shot PD review + Sam meeting prep).
+
+**`scene-shot-items.csv`** — added `SS-68`…`SS-74`. Updated `SS-01`, `SS-03`,
+`SS-05`, `SS-08`, `SS-13`, `SS-15`, `SS-16`, `SS-17`, `SS-18`, `SS-21`, `SS-26`,
+`SS-31`, `SS-36`, `SS-51`, `SS-53`, `SS-54`, `SS-57`, `SS-58`, `SS-65`, `SS-66`.
+
+Highlights: **the Scene 1→3 transition was redesigned** — the road/walking
+approach is cut entirely in favor of a static paper/kneeling composition that
+mirrors into the boy's scene (`SS-15`), resolving the walking-shot style clash
+(`SS-66`) and superseding the old road-dolly setup (`SS-13`, now Deferred).
+Scene 6's jump sequence decided as one continuous shot with a fabric-grip
+backup (`SS-31`). Scene 1 Shot 1 got a full composition + dressing pass (5
+depth layers, ~40% sky, fence/mist/leaves — `SS-51`), plus new shots for the
+bicycle/cigarette re-blocking (`SS-70`), Holly's OTS angle (`SS-71`), and not
+forcing the book into frame (`SS-72`). New Scene 5 "gone" pan shot flow
+(`SS-68`) and a Scene 8 camera-movement question (`SS-69`) added.
+
+**`production-wide-concerns.csv`** — added `PW-41`…`PW-54`. Updated `PW-06`,
+`PW-07`, `PW-15`, `PW-32`, `PW-37`, `PW-39`, `PW-40`.
+
+Highlights: **`PW-32` runtime is now Decided** — hard cap 20:00, practical
+target 18:00, per-scene budget locked (Scene 1 = 4:00, Scene 3 = 2:00 after
+its rework, Scene 5 = 4:00, Scene 7 = 3:00, everything else at the 1:00
+floor) — matches the [UFI Coverage Report artifact](https://claude.ai/code/artifact/a7df8c27-bfef-4612-b145-93c4f4708b8e),
+which was updated in the same session. **`PW-37`'s Tarkovsky-vs-French-New-Wave
+tension is now Decided**: lean into the strangeness rather than normalize.
+New: a full weekend scouting plan (`PW-46`), a shot-by-shot PD audit
+initiative (`PW-45`), an organic-dressing philosophy (`PW-43`), sound/score
+sourcing (`PW-50`), a Scene 1 acquisition list (`PW-52`), and a **flagged
+scheduling conflict** (`PW-53`) between the confirmed Oct 24–26 shoot
+weekend and new mentions of an Oct 26–27 test/rehearsal weekend — needs
+reconciling, not yet resolved.
+
+---
+
 ## 2026-09-09 — Test-footage review + Tarkovsky/FNW style call
 
 From the two Zoom meetings of **2026-09-09** (16:19 test-footage review; 17:32

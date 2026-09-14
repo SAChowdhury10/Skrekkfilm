@@ -1,2 +1,6 @@
 .DS_Store
 ~$*
+
+# Compiled deliverables too large for GitHub (>100MB) - share via Drive/Dropbox instead
+storyboards/UFI-Storyboards-All-Scenes.pdf
+storyboards/UFI-Storyboards-All-Scenes.pdf.zip

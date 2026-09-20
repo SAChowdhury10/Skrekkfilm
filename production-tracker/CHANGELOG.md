@@ -5,6 +5,35 @@ is recorded here, newest first. Rows are referenced by ID (`SS-##`, `PW-##`).
 
 ---
 
+## 2026-09-20 (evening) — Solo shot-by-shot review sweep
+
+From a solo self-recorded call reviewing the full shot list by ID (no new attendees).
+
+**`scene-shot-items.csv`** — updated 37 rows: confirmed/closed out `SS-07`, `SS-09`, `SS-19`,
+`SS-22`, `SS-28`, `SS-39`, `SS-46`, `SS-65`, `SS-68`, `SS-70`, `SS-71`, `SS-73`, `SS-76`
+(mostly moved to Decided); cut/deprecated `SS-66` (redone from scratch - crew needs
+retraining on the new version) and `SS-67` (no longer relevant, moved to Deferred); reaffirmed
+open/urgent items `SS-16`, `SS-17`, `SS-20`, `SS-23`, `SS-35`, `SS-36`, `SS-45`, `SS-47`,
+`SS-57`, `SS-58`, `SS-60`, `SS-83`; escalated `SS-59` to P1 (test required); shifted `SS-01` to
+Decided, `SS-10`/`SS-32` to Leaning (gimbal, angled bed respectively), `SS-64` to Leaning
+(dressing partly purchased); and **downgraded `SS-31` from Decided to Leaning** - flagged as
+"technically decided but practically unresolved" pending how the Dali-related execution shakes
+out. `SS-21`, `SS-30`, `SS-69` all reconfirmed as gated on dolly-grip confirmation (cross-ref
+`PW-03`). `SS-37`'s zoom lens is confirmed for acquisition, expected at a "Wednesday Bad Dog
+visit."
+
+**`production-wide-concerns.csv`** — added `PW-69`; updated `PW-62`.
+
+Flags raised rather than guessed: **`PW-62`** already tracks a Wednesday *Horizon* visit for
+lens/gimbal testing, but this session's notes mention a Wednesday *Bad Dog* visit for the same
+zoom lens (`SS-37`) - unclear if that's the same session mislabeled or a second visit; needs
+confirming. **`PW-69`** (new) captures an action item to call Rizwan today about "the
+associated shot" without the source notes naming which shot - noted Rizwan's prior tie to
+practical-effects timing (`SS-58`) and the newly-elevated paper-landing test (`SS-59`) as
+plausible but unconfirmed candidates.
+
+---
+
 ## 2026-09-20 — Test-footage shot notes, AD onboarding, equipment/crew build-out
 
 From three sessions: **2026-09-14** (full test-footage review - Scene 1 shots 1-6,

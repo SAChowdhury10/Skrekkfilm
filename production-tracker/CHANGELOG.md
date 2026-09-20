@@ -5,6 +5,46 @@ is recorded here, newest first. Rows are referenced by ID (`SS-##`, `PW-##`).
 
 ---
 
+## 2026-09-20 — Test-footage shot notes, AD onboarding, equipment/crew build-out
+
+From three sessions: **2026-09-14** (full test-footage review - Scene 1 shots 1-6,
+staircase/walking scenes, power-line field), **2026-09-20 AM** (equipment budget, lens
+selection, lighting strategy, crew recruitment), and **2026-09-20 PM** (first AD meeting
+with Nicholas & Salman - scheduling framework, documentation asks, gimbal/dolly discussion).
+
+**`scene-shot-items.csv`** — added `SS-75`…`SS-83`. Updated `SS-51`, `SS-58`, `SS-61`,
+`SS-21`, `SS-65`.
+
+Highlights: Scene 1 Shot 1 gets a sunrise/early-morning requirement plus a to-Tyler's-height,
+no-tilt camera rule (`SS-51`); Shots 2-6 each got their own composition/blocking pass from the
+footage review (`SS-75`…`SS-79`), including a proposed boom-up-from-the-notebook move for Shot
+6 pending reference review. The Scene 2 walk-to-the-stairs is redesigned and location-flexible
+(`SS-80`); the staircase sequence picked up blocking/lighting refinements (`SS-61`) and a
+crash-zoom-vs-dolly test plan (`SS-21`). New: Holly's stair-OTS pacing note (`SS-81`), the
+walking-down-stairs framing concept (`SS-82`), and a Tyler's-jacket prop flag (`SS-83`).
+
+**`production-wide-concerns.csv`** — added `PW-55`…`PW-68`. Updated `PW-06`, `PW-49`,
+`PW-43`, `PW-09`, `PW-01`, `PW-03`, `PW-32`, `PW-41`, `PW-53`, `PW-19`.
+
+Highlights: the Fisher 10 dolly model is confirmed for Scene 1 Shot 1 (`PW-06`). **`PW-03`
+(dolly grip) reopened** - three separate candidates (Bad Dog MIB, Dave Kube, Juan) are now in
+play across the three sessions with none contracted, flagged for reconciliation. The gaffer
+search (`PW-01`) pivoted to a **key-grip search instead** (`PW-61`, Zan as a candidate) given
+the diffusion-over-lighting approach. New equipment decisions: lighting strategy locked to
+natural light with a hard sunset cutoff (`PW-60`), a ~$2,000/day equipment budget and full gear
+list (`PW-58`), and an open zoom-lens choice between Angenieux/DZO/Leica (`PW-59`). The first AD
+meeting (**Nicholas & Salman confirmed**, Salman as 1st AD - `PW-65`) produced a
+sunlight-first/block-based scheduling framework (`PW-66`), a documentation checklist the
+directors owe the ADs by ~end of next weekend (`PW-67`), an on-set take/timing protocol
+(`PW-68`), and a gimbal (Moby/Movi Pro - likely the same unit named two ways) evaluation with
+several practical warnings (`PW-63`). **`PW-53`'s flagged Oct 24-27 date conflict is largely
+resolved**: the AD meeting confirms principal photography as Oct 24-26 with a possible Oct 27
+pickup day, though the original Oct 26-27 Tyler/Holly rehearsal mention isn't explicitly
+re-confirmed. Also flagged: the shot count is now cited as 30 vs. the prior ~29 used in
+Ishmam's timing pass (`PW-32`, `PW-41`) - needs reconciling.
+
+---
+
 ## 2026-09-13 — Runtime lock, Scene 1→3 redesign, PD audit, Sam prep
 
 From four Zoom sessions: **2026-09-10** (runtime/pacing + PD audit), **2026-09-11**

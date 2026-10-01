@@ -5,6 +5,72 @@ is recorded here, newest first. Rows are referenced by ID (`SS-##`, `PW-##`).
 
 ---
 
+## 2026-10-01 — Test-footage review: greener grade, diffusion filter, actor notes, shot fixes
+
+From the **2026-09-30** Shafi/Ishmam review of the footage shot at the 9/26 test/rehearsal
+weekend. It covers composition, performance, camera movement and colour, plus the action
+items for the Alex meeting on Sat 10/3.
+
+**`scene-shot-items.csv`**: added `SS-87`…`SS-95`. Updated `SS-08`, `SS-10`, `SS-15`,
+`SS-23`, `SS-36`, `SS-37`, `SS-38`, `SS-53`, `SS-57`, `SS-59`, `SS-69`, `SS-83`, `SS-85`.
+
+Highlights: **`SS-57` bench → Decided**. A bench has been picked up and will be spray-painted a
+darker brown, then distressed. **`SS-36` → Leaning**: the empty log bollards will be moved
+into the field for the Tarkovsky pan's first stop. How to make that read as intentional (the
+characters have "crossed" them) is still open. **`SS-69` → Leaning**: the Scene 8 final shot
+becomes a slow zoom out from a close-up of the older woman's face, with an apple box under her.
+**`SS-83` → Leaning**: jackets are ordered for Tyler and Holly, with a fitting next week.
+New rows:
+- `SS-87`: bench-dialogue blocking fixes.
+- `SS-88`: timing the "Bourgeois" cue.
+- `SS-89`, `SS-90`: composition fixes for the Scene 3 lying-down shot (~f/3, Holly lost in the
+  trees), and the sky opening that couldn't be found again (P1).
+- `SS-91`: following the scarf on the 5J tilt.
+- `SS-92`: a pedestal-down move with the falling paper (P1, needs rehearsal and Dave's OK).
+- `SS-93`: the log-bollard plan (full-length in Scene 7, cut shorter elsewhere).
+- `SS-94`: the dying plants behind the Scene 8 shot.
+- `SS-95`: mixing shallow and deep focus, with no mid-dialogue focus pulls in Scene 1.
+
+**`production-wide-concerns.csv`**: added `PW-77`…`PW-83`. Updated `PW-03`, `PW-06`,
+`PW-15`, `PW-18`, `PW-29`, `PW-44`, `PW-47`, `PW-56`, `PW-59`, `PW-63`, `PW-67`, `PW-69`,
+`PW-71`, `PW-73`, `PW-74`, `PW-75`.
+
+Highlights: the footage is too yellow, and **the grade shifts greener / blue-green** with grain
+in post (`PW-77`, Decided). The "dreamy" Fujifilm look comes mainly from Shafi's 1/8 black-mist
+filter, so the team wants one on the FX6. Horizon has diffusion filters, but compatibility with
+the vintage Zeiss glass is unconfirmed, and B&H is the fallback (`PW-78`). The **Sat 10/3 Alex
+meeting** will decide the on-set monitoring LUT and the zoom-vs-Zeiss colour match (`PW-79`).
+Other new rows:
+- `PW-80`: Ishmam to brief the wind operators Rizwan & Saba, and to warn Devin (sound).
+- `PW-81`: Holly's makeup test with Lucy is being redone; tattoo coverage; Tyler's beard/hair.
+- `PW-82`: Shafi and Ishika distress Basil's costume, the other costumes and the bench.
+- `PW-83`: Ishmam is on location Oct 9-11.
+
+**`PW-15`/`PW-56` → Decided**: Morgan builds the bed the week of the shoot. **`PW-44` →
+Leaning**, **`PW-29` P3→P2** (late-October yellow can't be graded green). `PW-75` gets the
+acting notes: Tyler over-performs and walks with a "cool guy" swagger, and Holly is slightly too
+deadpan. `PW-67`: the production document is due 10/3-4; Claude then generates the shot list,
+and there will also be an Excel version and a printed binder. The ADs are briefed early in the
+week of 10/5.
+
+Flags raised rather than guessed:
+- **`SS-87`/`SS-88`**: the notes file the dialogue-blocking notes under "Scene 1 — Bench".
+  However, "Bourgeois" occurs only in Scene 5 Shot 9 of the Shot-by-Shot Breakdown, and Holly's
+  turn and Tyler looking down also match that shot. `SS-88` was filed under Scene 5 Shot 9 and
+  `SS-87` under Scene 1, so confirm which footage this was.
+- **`SS-91`**: the notes say Tyler comments on Holly's *scarf*, but the breakdown's Shot 10
+  line is "A beautiful jacket..." / "It was my mother's...".
+- **`PW-03`**: the notes label Dave as "DP". This was read as a slip, since Dave is the dolly
+  operator and Alex is the cinematographer.
+- **`PW-06`**: the notes don't say whether the dolly-path videos were filmed on 9/26-27.
+- **`SS-57`**: the notes don't say which bench was picked up, or whether it has a side handle.
+- **`PW-81`**: the notes don't say whether Lucy's test was the old-age makeup (`SS-43`).
+- **`PW-69`** (the 9/20 Rizwan call) can probably be closed now that `PW-80` exists.
+- **`PW-59`**: a zoom reaching 140mm is beyond the DZO 35-80mm option, and the zoom choice still
+  isn't recorded.
+
+---
+
 ## 2026-09-30 — Dolly terrain & cost, location lock-down, Saturday rehearsal plan (+ 9/3 backfill)
 
 From the **2026-09-23** Shafi/Ishmam session (dolly logistics, location scouting, bench/bed

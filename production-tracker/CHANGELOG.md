@@ -5,6 +5,64 @@ is recorded here, newest first. Rows are referenced by ID (`SS-##`, `PW-##`).
 
 ---
 
+## 2026-09-30 — Dolly terrain & cost, location lock-down, Saturday rehearsal plan (+ 9/3 backfill)
+
+From the **2026-09-23** Shafi/Ishmam session (dolly logistics, location scouting, bench/bed
+sourcing, the Sat 9/26 rehearsal plan, risk assessment), plus a **backfill of the 2026-09-03**
+Sam meeting, which no earlier pass had processed. The 9/3 items are limited to what later
+meetings hadn't already covered, and each one is labelled `9/3 (backfill)` in Notes/Log.
+
+**`scene-shot-items.csv`**: added `SS-84`…`SS-86`. Updated `SS-09`, `SS-15`, `SS-16`,
+`SS-18`, `SS-21`, `SS-23`, `SS-24`, `SS-30`, `SS-31`, `SS-36`, `SS-39`, `SS-45`, `SS-57`,
+`SS-68`, `SS-69`, `SS-83`.
+
+Highlights: the three scenes that can't fall back on ADR (the Scene 3 train conversation, the
+Scene 5 turning sequence, the Scene 7 bollard scene) are now an open P1 memorization risk
+(`SS-84`), with cue cards as the on-set contingency. **`SS-15` moved P3→P1**: it's the ~56s no-cut
+train conversation, and the Holly/Tyler interview field is the leading location. New: Ishmam's
+Scene 5 Shots 9-10 / Scene 7 blocking plan, due Fri 9/25 (`SS-85`), and a possible lateral dolly
+move under the Tarkovsky pan (`SS-86`). The bench now has a Plan A: Morgan builds an
+Ecuador-style bench. Plan B is Marketplace, and a free High Ridge bench was about to be junked
+(`SS-57`).
+
+**`production-wide-concerns.csv`**: added `PW-70`…`PW-76`. Updated `PW-02`, `PW-03`, `PW-06`,
+`PW-12`, `PW-15`, `PW-22`, `PW-25`, `PW-28`, `PW-31`, `PW-46`, `PW-56`, `PW-59`, `PW-62`,
+`PW-65`, `PW-66`, `PW-67`.
+
+Highlights: **`PW-03` dolly grip Open→Leaning**. The notes now treat Dave as "the dolly
+operator", and Shafi is contacting him directly (not through Bad Dog) about terrain. **Terrain is
+now the critical constraint** (`PW-06`), and the plan is to film dolly-path videos for Dave's
+approval. The ~$3,000 dolly package covers only 2-3 confirmed dolly shots, so the team will use the
+dolly more where terrain allows (`PW-70`). New location items: the Sat 9/26 location lock-down
+with a rain plan (`PW-71`), and the Mirror field's ~8-person crew cap and lack of parking
+(`PW-72`). Also new: PD/wardrobe spend to date (`PW-73`), the Sat 9/26 rehearsal plan (`PW-74`),
+performance direction "less than natural, more than current" (`PW-75`), and lighting
+consistency as the #1 production fear, which also lists the other 9/23 risks (`PW-76`).
+**`PW-28` → Decided**: daily 15-min stand-ups with a per-shot risk sheet start Mon 9/28.
+
+Flags raised rather than guessed:
+- The 9/23 notes say "Scenes 5, 9 and 10". These were read as **Scene 5 Shots 9-10** of the
+  current Shot-by-Shot Breakdown. The tracker's older Scene 5 numbers lag that breakdown: the
+  log/book dolly-in is `SS-24` "Shot 8" / `SS-26` "Shot 9", but it is Shot 10 in the breakdown.
+- **`PW-03`**: "Dave" is presumed to be Dave Kube. Neither the Bad Dog MIB grip nor Juan
+  came up, so confirm those threads are closed.
+- **`PW-65`**: Islam is handling shoot-day food. That very likely resolves the "production
+  coordinator also named Ishmam" transcription artifact.
+- **`PW-62`/`PW-59`**: the 9/23 notes don't record the outcome of that day's Horizon visit
+  (zoom lens, gimbal).
+- **`SS-83`**: Ishmam's $6 jacket pickup (Fri 9/25) may or may not be Tyler's jacket.
+- **`PW-74`**: Scene 6 was skipped on 9/26 because "Holly isn't in it", but `SS-65` has Holly as
+  the woman at the end of Scene 6's pan.
+- The notes transcribe "Tarkovsky" as "Tchaikovsky"/"Perkovsky".
+
+Deliberately left out: the 9/23 discussion of crew payment and who is or isn't being paid.
+This report is public and shared with the crew, and the notes ask for that to stay
+confidential. From 9/3, these were skipped because they're past or superseded: Labor Day
+scheduling, the gaffer's 24th/25th availability (the search has since pivoted to a key grip,
+`PW-61`), lens-testing logistics, and the $5-6k equipment range (now `PW-58`).
+
+---
+
 ## 2026-09-20 (evening) — Solo shot-by-shot review sweep
 
 From a solo self-recorded call reviewing the full shot list by ID (no new attendees).
